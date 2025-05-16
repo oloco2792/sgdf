@@ -5,9 +5,9 @@
     <?php include 'include/head.php';?>
 </head>
 <body>
-    <div class="flexing">
-        <div class="izquierda">Hola</div>
-        <div class="derecha">Hola</div>
+    <div class="caja_flex">
+        <div class="izquierda"></div>
+        <div class="derecha"></div>
     </div>
 </body>
 </html>
