@@ -1,34 +1,37 @@
-const formularios_ajax = document.querySelector(".FormularioAjax"); 
+const formularios_ajax = document.querySelector(".formularioAjax"); 
  
-function enviar_fomrulario_ajax(e){
+function enviar_formulario_ajax(e){
     e.preventDefault();
 
-    let enviar = confirm("Quieres enviar el formulario?")
+    let enviar=confirm("Quieres enviar el formulario");
 
-    if(enviar == true){
-        let data = new FormData(this);
-        let method = this.getAttribute("method");
-        let action = this.getAttribute("action");
+    if(enviar==true){
 
-        let encabezados = new Headers();
+        let data= new FormData(this);
+        let method=this.getAttribute("method");
+        let action=this.getAttribute("action");
 
-        let config = {
+        let encabezados= new Headers();
+
+        let config={
             method: method,
             headers: encabezados,
             mode: 'cors',
             cache: 'no-cache',
             body: data
-        }
+        };
 
-        fetch(action, config)
+
+        fetch(action,config)
         .then(respuesta => respuesta.text())
-        .then(respuesta => {
-            let contenedor = document.querySelector(".form-rest");
+        .then(respuesta =>{ 
+            let contenedor=document.querySelector(".form-rest");
             contenedor.innerHTML = respuesta;
-        })
+        });
     }
+
 }
 
 formularios_ajax.forEach(formularios => {
-    formularios.addEventListener("submit", enviar_fomrulario_ajax)
-})
+    formularios.addEventListener("submit",enviar_formulario_ajax);
+});

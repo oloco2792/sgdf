@@ -13,9 +13,9 @@
     if(is_file("./vistas/".$_GET["vistas"].".php") && $_GET["vistas"]!="login" && $_GET["vistas"]!="404"){
         include "./include/navbar.php";
 
-        include "./vistas/".$_GET["vistas"].".php";
+        include "./include/script.php";
 
-        //include "./vistas/".$_GET["vistas"].".php";
+        include "./vistas/".$_GET["vistas"].".php";
     }else{
         if($_GET["vistas"]=="login"){
             include "./vistas/login.php";
@@ -24,5 +24,6 @@
         }
     }
     ?>
+
 </body>
 </html>
