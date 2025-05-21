@@ -1,8 +1,13 @@
 :root{
-	--fuentePrincipal: 'Roboto', 'Arial', 'Times New Roman', sans-serif;
+	--fuentePrincipal: 'Lato', 'Arial', 'Times New Roman', sans-serif;
 	--blanco: #ffffff;
+	--grisClaro: #CBCCCB;
 	--negro: #000000;
-	--amarillo: #fbff49;
+	--amarillo: #F6E307;
+	--amarilloOscuro: #FAD514;
+	--naranja: #F99811;
+	--amarilloLimon: #FAF4B6;
+	--amarilloPastel: #FFEB3B;
 }
 
 /**Globales**/
@@ -22,12 +27,12 @@ body{
 }
 
 
-p{
+/**p{
 	line-height: 2rem;
 }
 
 h1{
-	font-size: 2,8rem;
+	font-size: 2.5rem;
 }
 
 h2{
@@ -40,9 +45,13 @@ h3{
 
 h4{
 	font-size: 1.5rem;
-}
+}**/
 
 /**Utilidades**/
+
+.display-flex{
+	display: flex;
+}
 
 .contenedor{
 	max-width: 120rem;
@@ -66,8 +75,14 @@ h4{
 	box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.48);
 	-webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.48);
 	-moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.48);
-	padding: 2rem;
+
+	padding: 1rem;
 	border-radius: 1rem;
+	margin: 0 auto;
+}
+
+.fondo-blanco{
+	background-color: var(--blanco);
 }
 
 .gray-out{
@@ -77,7 +92,37 @@ h4{
 .boton-derecha{
 	display: flex;
 	justify-content: flex-end;
+	width: 95%;
 }
+
+/**==Navegacion==**/
+
+.contenedor--bg{
+	background-color: var(--amarilloPastel);
+}
+
+.navegacion{
+	display: flex;
+	flex-direction: row;
+	background-color: var(--amarilloPastel);
+	justify-content: space-evenly;
+}
+
+.navegacion__opcion{
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 2rem;
+	color: var(--negro)
+}
+
+.navegacion__opcion:visited{
+	text-decoration: none;
+}
+
+
+/**==CUERPO==**/
+
+/**===LOGIN===**/
 
 /**Dos Paneles**/
 
@@ -89,21 +134,83 @@ h4{
 .izquierda{
 	height: 100vh;
 	width: 60%;
-	background-image: url(../img/bg.jpg);
-	background-repeat: no-repeat;
+    background-image: url(../img/bg.jpg);
+	background-repeat: round;
 	background-size: cover;
-	filter: brightness(40%);
+    background-position:center top;
+	color: var(--blanco);
 }
 
 .derecha{
-	background-color: blue;
+	position: relative;
 	height: 100vh;
 	width: 40%;
 }
 
+/**Login(derecha)**/
 
-/**.footer{
+.login{
+	display: flex;
+	flex-direction: column;
+}
+
+.login__header{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 1rem;
 	text-align: center;
-	background-color: black;
-	color: white;
-}**/
+	flex: 1 1 auto;
+}
+
+/**Formulario**/
+
+.login__form{
+	margin: 0 auto;
+	width: 90%;
+	flex: 1 1 auto;
+}
+
+.login__form__label{
+
+}
+
+.login__form__campos{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	gap: 2rem;
+}
+
+.login__form__input{
+	height: 2rem;
+}
+
+.login__form__boton{
+	padding: 0.5rem;
+	margin-top: 1rem;
+	background-color: var(--naranja);
+	border-radius: 0.5rem;
+}
+
+.login__footer{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-top: 2rem;
+	text-align: center;
+	flex: 1 1 auto;
+}
+
+/**=== 404 ===**/
+
+.body-error{
+	flex-direction: column;
+	justify-content: center;
+	
+}
+
+.err404{
+	margin: 0 auto;
+	font-size: 3rem;
+}
