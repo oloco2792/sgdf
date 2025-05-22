@@ -1,11 +1,12 @@
-const formularios_ajax = document.querySelector(".formularioAjax"); 
- 
+//document.addEventListener("DOMContentLoaded", function() {
+const formularios_ajax=document.querySelectorAll(".FormularioAjax");
+
 function enviar_formulario_ajax(e){
     e.preventDefault();
 
-    let enviar=confirm("Quieres enviar el formulario");
+    let enviar = confirm("Quieres enviar el formulario?");
 
-    if(enviar==true){
+    if(enviar == true){
 
         let data= new FormData(this);
         let method=this.getAttribute("method");
@@ -21,7 +22,6 @@ function enviar_formulario_ajax(e){
             body: data
         };
 
-
         fetch(action,config)
         .then(respuesta => respuesta.text())
         .then(respuesta =>{ 
@@ -35,3 +35,5 @@ function enviar_formulario_ajax(e){
 formularios_ajax.forEach(formularios => {
     formularios.addEventListener("submit",enviar_formulario_ajax);
 });
+
+//});

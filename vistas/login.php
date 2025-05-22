@@ -15,8 +15,8 @@
             </div>
             <div class="caja width90 fondo-blanco">
                 <div class="login__form">
-                <form class="login__form__campos" method="POST" action="">
-                    <label class="login__form__label" for="name">Usuario</label>
+                <form class="login__form__campos" method="POST" action="" autocomplete="off">
+                    <label class="login__form__label" for="user">Usuario</label>
                     <input class="login__form__input"type="text" name="user" pattern="[a-zA-Z0-9]{4, 20}" maxlength="20" required>
                     
                     <label class="login__form__label" for="pass">Contraseña</label>
@@ -25,6 +25,15 @@
                 <div class="boton-derecha">
                     <input class="login__form__boton"type="submit" value="Ingresar">
                 </div>
+
+                <?php
+                    if(isset($_POST['user']) && isset($_POST['pass'])){
+                        require_once './php/main.php';
+
+                        require_once './php/iniciar_sesion.php';
+                    }
+                ?>
+
                 </form>
             </div>
             <div class="login__footer">
