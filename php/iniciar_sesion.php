@@ -25,22 +25,26 @@ $check_user = conexion();
 $check_user = $check_user -> query("SELECT user FROM usuarios WHERE user = '$user'");
 
 $check_pass = conexion();
-$check_pass = $check_pass -> query("SELECT user FROM usuarios WHERE pass = '$user'");
+$check_pass = $check_pass -> query("SELECT pass FROM usuarios WHERE pass = '$pass'");
 
-if($check_user -> rowCount() == 1){
-    $check_user = $check_user->fecth();
+
+
+if($check_user -> rowCount() == 1 && $check_pass -> rowCount() == 1){
+    $check_user = $check_user->fetch();
+    $check_pass = $check_pass->fetch();
 
     if($check_user['user'] == $user && $check_pass['pass'] == $pass){
-        $_SESSION['id'] = $check_user['id'];
+        //$_SESSION['id'] = $check_user['id'];
         $_SESSION['user'] = $check_user['user'];
-        $_SESSION['pass'] = $check_user['pass'];
+        $_SESSION['pass'] = $check_pass['pass'];
 
         if(headers_sent()){
             echo "<script window.location.href='index.php?vista=home';></script>";
         }else{
-            header("Location: index.php?vista=home");
+            header("Location: index.php?vistas=home");
     }}
 }else{ 
     echo '<p>Usuario o Clave Incorrecta</p>';
 };
 $check_user = null;
+$check_pass = null;

@@ -8,6 +8,7 @@
 	--naranja: #F99811;
 	--amarilloLimon: #FAF4B6;
 	--amarilloPastel: #FFEB3B;
+	--azulRey: #000080;
 }
 
 /**Globales**/
@@ -225,4 +226,25 @@ h4{
 .registro__nuevo{
 	display: flex;
 	justify-content: space-between;
+}
+
+/**==FOOTER==**/
+
+.footer__div{
+	width: 60%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.footer{
+	display: flex;
+	justify-content: center;
+
+	position: fixed;
+  	left: 0;
+  	bottom: 0;
+	right: 0;
+	padding: 1rem;
+	background-color: var(--azulRey);
+	color: var(--blanco);
 }

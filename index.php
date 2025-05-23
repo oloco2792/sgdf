@@ -17,6 +17,8 @@
 
         include "./include/script.php";
 
+        include "./include/footer.php";
+
     }else{
         if($_GET["vistas"]=="login"){
             include "./vistas/login.php";
