@@ -1,7 +1,5 @@
 <main class="contenedor">
-
     <div class="form-rest"></div>
-    
     <h1>Registrar Factura</h1>
     <form class="registro form-rest" method="POST" action="">
         <label>Elija una nombre</label>

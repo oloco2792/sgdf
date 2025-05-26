@@ -34,12 +34,11 @@ if($check_user -> rowCount() == 1 && $check_pass -> rowCount() == 1){
     $check_pass = $check_pass->fetch();
 
     if($check_user['user'] == $user && $check_pass['pass'] == $pass){
-        //$_SESSION['id'] = $check_user['id'];
         $_SESSION['user'] = $check_user['user'];
         $_SESSION['pass'] = $check_pass['pass'];
 
         if(headers_sent()){
-            echo "<script window.location.href='index.php?vista=home';></script>";
+            echo "<script window.location.href='index.php?vistas=home';></script>";
         }else{
             header("Location: index.php?vistas=home");
     }}
