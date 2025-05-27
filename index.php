@@ -11,11 +11,20 @@
     }
 
     if(is_file("./vistas/".$_GET["vistas"].".php") && $_GET["vistas"]!="login" && $_GET["vistas"]!="404"){
+        
+        //Cerrar Sesion
+        if(!isset($_SESSION['user'])){
+            include "./vistas/logout.php";
+            exit();
+        }
+        
         include "./include/navbar.php";
 
         include "./vistas/".$_GET["vistas"].".php";
 
         include "./include/script.php";
+
+        include "./include/footer.php";
 
     }else{
         if($_GET["vistas"]=="login"){
@@ -26,6 +35,6 @@
     }
     ?>
 
-
+    <script src="js/dom.js"></script>
 </body>
 </html>

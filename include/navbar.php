@@ -3,6 +3,6 @@
         <a class="navegacion__opcion" href="index.php?vistas=deuda_new">Registrar Deuda</a>
         <a class="navegacion__opcion" href="index.php?vistas=factura_new">Registrar Factura</a>
         <a class="navegacion__opcion" href="index.php?vistas=ver_registros">Ver Registros</a>
-        <a class="navegacion__opcion" href="#">Salir</a>
+        <a class="navegacion__opcion" href="index.php?vistas=logout">Salir</a>
     </nav>
 </div>

@@ -1,6 +1,5 @@
 //Deshabilitar Inputs y "Deshabilitar" Texto
 function enableCampos(checkbox) {
-    //Para Inputs
     const inputs = document.querySelectorAll('.activarInput');
     inputs.forEach(function(input) {
         if(checkbox.checked){
@@ -19,12 +18,14 @@ function enableCampos(checkbox) {
             label.classList.add('label--off');
         }
     });
-}
 
-function disableCampos(checkbox) {
-    //Para Inputs
     const inputs = document.querySelectorAll('.datos');
     inputs.forEach(function(input) {
-        input.disabled = checkbox.checked;
+        if(checkbox.checked){
+            select.disabled = true;    
+        }else{
+            select.disabled = false;
+        }
+        
     });
 }
