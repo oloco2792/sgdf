@@ -6,7 +6,6 @@ $nombre = limpiar_cadena($_POST['nombre']);
 $apellido = limpiar_cadena($_POST['apellido']);
 $apodo = limpiar_cadena($_POST['apodo']);
 $monto = limpiar_cadena($_POST['monto']);
-$fecha = limpiar_cadena($_POST['fecha']);
 
 //Verificar Campos Obligatorios
 if($nombre == "" || $apellido == "" || $monto == ""){
@@ -56,19 +55,10 @@ if($check_apellido -> rowCount() > 0){
 }
 $check_apellido = null;
 
+//Guardar Persona
+$guardar_persona = conexion();
+$guardar_persona = $guardar_persona -> query("INSERT INTO personas (nombre, apellido, apodo) VALUES('$nombre', '$apellido', '')");
 
-//Guardar Persona (y captura el id)
-$guardar_persona = conexion();
-$guardar_persona = $guardar_persona -> query("INSERT INTO personas (nombre, apellido, apodo) VALUES('$nombre', '$apellido', '$apodo')");
-$guardar_persona = null;
-$guardar_persona = conexion();
-$guardar_persona = $guardar_persona -> query("SELECT LAST_INSERT_ID() AS id");
-$resultado = $guardar_persona->fetch(PDO::FETCH_ASSOC);
-$id_deudor = $resultado['id'];
-define("id_deudor", $id_deudor);
+
 $guardar_persona = null;
 
-//Guardar Deuda
-$fecha_formateada = date('Y-m-d', strtotime($fecha));
-$guardar_deuda = conexion();
-$guardar_deuda = $guardar_deuda -> query("INSERT INTO deudas (persona_id, monto, fecha, estado, descripcion, fecha_actualizacion) VALUES(".id_deudor.", '$monto', STR_TO_DATE($fecha, '%d/%m/%Y'), '', '', '')");

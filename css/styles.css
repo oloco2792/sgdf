@@ -8,7 +8,6 @@
 	--naranja: #F99811;
 	--amarilloLimon: #FAF4B6;
 	--amarilloPastel: #FFEB3B;
-	--azulRey: #000080;
 }
 
 /**Globales**/
@@ -48,20 +47,10 @@ h4{
 	font-size: 1.5rem;
 }**/
 
-/**==UTILIDADES==**/
+/**Utilidades**/
 
-
-
-.posicion-relativa{
-	position: relative;
-}
-
-.centrar-vertical{
-	position: absolute;
-    top: 17vh;
-    bottom: 17vh;
-    left: 0;
-    right: 0;
+.display-flex{
+	display: flex;
 }
 
 .contenedor{
@@ -106,16 +95,7 @@ h4{
 	width: 95%;
 }
 
-/**==EVENTOS==**/
-
-.label--off {
-  color: gray; 
-  opacity: 0.6; 
-  cursor: not-allowed; 
-  pointer-events: none; 
-}
-
-/**==NAVEGACION==**/
+/**==Navegacion==**/
 
 .contenedor--bg{
 	background-color: var(--amarilloPastel);
@@ -245,25 +225,4 @@ h4{
 .registro__nuevo{
 	display: flex;
 	justify-content: space-between;
-}
-
-/**==FOOTER==**/
-
-/**.footer__div{
-	width: 60%;
-	display: flex;
-	justify-content: space-between;
-}**/
-
-.footer{
-	display: flex;
-	justify-content: center;
-
-	position: fixed;
-  	left: 0;
-  	bottom: 0;
-	right: 0;
-	padding: 1rem;
-	background-color: var(--azulRey);
-	color: var(--blanco);
 }
