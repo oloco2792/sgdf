@@ -39,20 +39,16 @@ $stmt = $check_persona->prepare("SELECT id FROM personas WHERE nombre = :nombre 
 $stmt->execute([':nombre' => $nombre, ':apellido' => $apellido]);
 
 if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    // La persona ya existe, usa su ID
     $id_deudor = $row['id'];
 } else {
-    // La persona no existe, la insertamos
     $insert_persona = conexion();
     $insert_persona = $insert_persona->prepare("INSERT INTO personas (nombre, apellido, apodo) VALUES (:nombre, :apellido, :apodo)");
     $insert_persona->execute([':nombre' => $nombre, ':apellido' => $apellido, ':apodo' => $apodo]);
 
-    // Obtener el ID insertado
     $id_deudor = $insert_persona->lastInsertId();
 }
 
-// Ahora insertamos la deuda usando ese ID
-// Asegúrate de que $fecha esté en formato correcto (ejemplo: 'YYYY-MM-DD')
+
 $fecha_formateada = date('Y-m-d', strtotime($fecha));
 
 // Inserción en la tabla deudas

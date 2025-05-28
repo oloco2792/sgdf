@@ -39,7 +39,7 @@ require_once "main.php";
 
     if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $id_deudor = $row['id'];
-    } else {
+    }else{
         $stmt_insert = $pdo->prepare("INSERT INTO personas (nombre, apellido, apodo) VALUES (:nombre, :apellido, :apodo)");
         $stmt_insert->execute([':nombre' => $nombre, ':apellido' => $apellido, ':apodo' => $apodo]);
 

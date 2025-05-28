@@ -13,7 +13,7 @@ require_once "main.php";
         exit();
     }
 
-    if (verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ-/. ]{3,40}", $razonSocial)) {
+    if (verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}", $razonSocial)) {
         echo "El Nombre no coincide con el formato solicitado";
         exit();
     }
@@ -30,7 +30,10 @@ require_once "main.php";
     $pdo = conexion();
 
     $stmt = $pdo->prepare("SELECT id FROM proveedores WHERE razonSocial = :razonSocial AND rif = :rif");
-    $stmt->execute([':razonSocial' => $razonSocial, ':razonSocial' => $razonSocial]);
+    $stmt->execute([
+        ':razonSocial' => $razonSocial,
+        ':rif' => $rif
+    ]);
 
     if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $id_deudor = $row['id'];
@@ -43,9 +46,9 @@ require_once "main.php";
 
     $fecha_formateada = date('Y-m-d', strtotime($fecha));
 
-    $stmt_deuda = $pdo->prepare("INSERT INTO facturas(persona_id, monto, fecha, estado, descripcion, fecha_actualizacion) VALUES (:persona_id, :monto, :fecha, :estado, :descripcion, '')");
+    $stmt_deuda = $pdo->prepare("INSERT INTO facturas(proveedor_id, monto, fecha, estado, descripcion, fecha_actualizacion) VALUES (:proveedor_id, :monto, :fecha, :estado, :descripcion, '')");
     $stmt_deuda->execute([
-        ':persona_id' => $id_deudor,
+        ':proveedor_id' => $id_deudor,
         ':monto' => $monto,
         ':fecha' => $fecha_formateada,
         ':estado' => $estado,
@@ -54,7 +57,7 @@ require_once "main.php";
 
     echo "La deuda se ha registrado correctamente.";
 
-    $stmt = $pdo->prepare("SELECT id, nombre, apellido FROM personas");
+    $stmt = $pdo->prepare("SELECT id, razonSocial, rif FROM proveedores");
     $stmt->execute();
 
     $personas = $stmt->fetchAll(PDO::FETCH_ASSOC);

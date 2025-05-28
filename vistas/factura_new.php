@@ -21,10 +21,11 @@
             </select-->
         <div class="registro__nuevo">
             <label class="datosNombres" for="razonSocial">Razon Social</label>
-            <input class="activarInput" type="text" name="razonSocial" pattern="[a-zA-Z. ]{4, 30}" maxlength="30" required>
+            <input class="activarInput" type="text" name="razonSocial" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{4, 30}" maxlength="30" required>
         
             <label class="datosNombres" for="rif">RIF</label>
             <input class="activarInput" type="number" name="rif" pattern="[a-zA-Z]{4, 20}" maxlength="20" required>
+        </div>
 
         <label class="" for="monto">Monto</label>
         <input class="" type="number" name="monto" pattern="[0-9]{1, 20}" maxlength="20" required>

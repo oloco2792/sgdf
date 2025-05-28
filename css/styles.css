@@ -247,6 +247,36 @@ h4{
 	justify-content: space-between;
 }
 
+/**==VER REGISTROS==**/
+
+.registros__tabla {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 2rem;
+}
+
+.registros__th, .registros__td {
+	border: 1px solid #ccc;
+	padding: 8px;
+	text-align: left;
+}
+
+.registros__th {
+	background-color: #f4f4f4;
+}
+
+.filters {
+	margin-bottom: 20px;
+}
+
+.pagination {
+	margin-top: 20px;
+}
+
+.filters__boton {
+	margin-right: 5px;
+}
+
 /**==FOOTER==**/
 
 /**.footer__div{

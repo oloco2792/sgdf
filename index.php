@@ -35,6 +35,5 @@
     }
     ?>
 
-    <script src="js/dom.js"></script>
 </body>
 </html>
