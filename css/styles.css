@@ -303,6 +303,7 @@ h4{
 
 .registros__th {
 	background-color: #f4f4f4;
+	text-transform: uppercase;
 }
 
 .filters {
