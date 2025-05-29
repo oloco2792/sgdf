@@ -10,7 +10,7 @@ function cargarRegistros() {
 
     fetch('./php/obtener_registros.php', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: `fechaDesde=${fechaDesde}&fechaHasta=${fechaHasta}&busqueda=${busqueda}`
     })
     .then(res => res.json())
@@ -34,11 +34,11 @@ function mostrarRegistros() {
     registrosPagina.forEach(reg => {
         const fila = document.createElement('tr');
         fila.innerHTML = `
-            <td class="registros__td">${reg.tipo}</td>
-            <td class="registros__td">${reg.nombre}</td>
-            <td class="registros__td">${reg.fecha}</td>
-            <td class="registros__td">${reg.descripcion}</td>
-            <td class="registros__td">${reg.monto}</td>
+            <td>${reg.tipo}</td>
+            <td>${reg.nombre}</td>
+            <td>${reg.fecha}</td>
+            <td>${reg.descripcion}</td>
+            <td>${reg.monto}</td>
         `;
         tbody.appendChild(fila);
     });

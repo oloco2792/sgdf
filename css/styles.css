@@ -57,14 +57,14 @@ h4{
 }
 
 .centrar-vertical{
-	position: absolute;
-    top: 17vh;
-    bottom: 17vh;
+	display: flex;
+	flex-direction: column;
     left: 0;
     right: 0;
 }
 
 .contenedor{
+
 	max-width: 120rem;
 	margin: 0 auto;
 	width: 90%;
@@ -106,6 +106,10 @@ h4{
 	width: 95%;
 }
 
+.width100{
+	width: 100%;
+}
+
 /**==EVENTOS==**/
 
 .label--off {
@@ -138,6 +142,42 @@ h4{
 .navegacion__opcion:visited{
 	text-decoration: none;
 }
+
+/**Dropdown**/
+.dropbtn {
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	padding: 2rem;
+	background-color: rgba(255, 255, 255, 0.0)
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: var(--amarilloOscuro);} 
 
 /**==CUERPO==**/
 
@@ -289,10 +329,7 @@ h4{
 	display: flex;
 	justify-content: center;
 
-	position: fixed;
-  	left: 0;
-  	bottom: 0;
-	right: 0;
+
 	padding: 1rem;
 	background-color: var(--azulRey);
 	color: var(--blanco);

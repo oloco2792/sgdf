@@ -4,7 +4,7 @@
 <head>
     <?php include 'include/head.php';?>
 </head>
-<body>
+<body style="display: flex; flex-direction: column; justify-content: space-between">
     <?php
     if(!isset($_GET["vistas"]) || $_GET["vistas"]==""){
         $_GET["vistas"] = "login";
