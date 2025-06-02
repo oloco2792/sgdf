@@ -6,9 +6,7 @@
         <div class="dropdown">
             <button class="dropbtn navegacion__opcion">Ver Registros</button>
             <div class="dropdown-content">
-                <a href="index.php?vistas=ver_personas">Ver Personas</a>
                 <a href="index.php?vistas=ver_deudas">Ver Deudas</a>
-                <a href="index.php?vistas=ver_proveedores">Ver Proveedores</a>
                 <a href="index.php?vistas=ver_facturas">Ver Facturas</a>
             </div>
         </div>

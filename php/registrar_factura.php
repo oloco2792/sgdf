@@ -8,22 +8,31 @@ require_once "main.php";
     $estado = limpiar_cadena($_POST['estado']);
     $descripcion = limpiar_cadena($_POST['descripcion']);
 
-    if ($razonSocial == "" || $rif == "" || $monto == "" || $estado = "") {
-        echo 'Uno de los campos obligatorios no ha sido llenado';
+    if ($razonSocial == "" || $rif == "" || $monto == "" || $estado == "") {
+    echo "<div class='mensaje_error'>
+    <p class='mensaje_error__p'>Uno de los campos obligatorios no ha sido llenado</p>
+    </div>";
         exit();
     }
 
-    if (verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}", $razonSocial)) {
-        echo "El Nombre no coincide con el formato solicitado";
+    if (verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9. ]{3,40}", $razonSocial)) {
+        echo "<div class='mensaje_error'>
+        <p class='mensaje_error__p'>El Nombre/Razon Social no coincide con el formato solicitado</p>
+        </div>";
         exit();
     }
 
     if (verificar_datos("[0-9]{3,40}", $rif)) {
-        echo "El Apellido no coincide con el formato solicitado";
+        echo "<div class='mensaje_error'>
+        <p class='mensaje_error__p'>El RIF no coincide con el formato solicitado</p>
+        </div>";
         exit();
     }
-    if (verificar_datos("[0-9]{3,40}", $monto)) {
-        echo "El Monto no coincide con el formato solicitado";
+
+    if (verificar_datos("[0-9]{1,40}", $monto)) {
+        echo "<div class='mensaje_error'>
+        <p class='mensaje_error__p'>El Monto no coincide con el formato solicitado</p>
+        </div>";
         exit();
     }
 
@@ -55,7 +64,9 @@ require_once "main.php";
         ':descripcion' => $descripcion
     ]);
 
-    echo "La deuda se ha registrado correctamente.";
+    echo "<div class='mensaje_error'>
+    <p class='mensaje_error__p'>La deuda se ha registrado correctamente.</p>
+    </div>";
 
     $stmt = $pdo->prepare("SELECT id, razonSocial, rif FROM proveedores");
     $stmt->execute();

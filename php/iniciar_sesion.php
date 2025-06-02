@@ -43,7 +43,9 @@ if($check_user -> rowCount() == 1 && $check_pass -> rowCount() == 1){
             header("Location: index.php?vistas=home");
     }}
 }else{ 
-    echo '<p>Usuario o Clave Incorrecta</p>';
+    echo "<div class='mensaje_error'>
+    <p class='mensaje_error__p'>Usuario o Clave Incorrecta</p>
+    </div>";
 };
 $check_user = null;
 $check_pass = null;

@@ -3,23 +3,29 @@ require_once "./php/main.php";
 
 $persona_id = $_POST['persona_id'];
 
-try {
     $pdo = conexion();
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Obtener las deudas de la persona
     $sql = "SELECT * FROM deudas WHERE persona_id = :persona_id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':persona_id' => $persona_id]);
-	echo "<div class='posicion-relativa centrar-vertical'>";
-	echo "<main class='contenedor caja'>";
-    echo "<h2>Deudas para la persona ID: " . htmlspecialchars($persona_id) . "</h2>";
-    echo "<table class='deudas__tabla'>";
+
+    $stmtNombre = $pdo->prepare("SELECT nombre, apellido FROM personas WHERE id = :persona_id");
+    $stmtNombre->execute([':persona_id' => $persona_id]);
+    $persona = $stmtNombre->fetch(PDO::FETCH_ASSOC);
+    $nombre_completo = $persona ? $persona['nombre'] .' '. $persona['apellido'] : 'Desconocido';
+
+    echo "<div class='posicion-relativa centrar-vertical'>";
+    echo "<main class='contenedor caja'>";
+    echo "<h1>Deudas de " . htmlspecialchars($nombre_completo) . "</h1>";
+    echo "<table class='registros__tabla'>";
     echo "<thead>
             <tr>
                 <th class='registros__th'>ID Deuda</th>
                 <th class='registros__th'>Monto</th>
                 <th class='registros__th'>Estado</th>
+                <th class='registros__th'>Fecha</th>
+                <th class='registros__th'>Descripcion</th>
                 <th class='registros__th'>Acciones</th>
             </tr>
           </thead>";
@@ -30,25 +36,20 @@ try {
         echo "<td class='registros__td'>" . htmlspecialchars($deuda['id']) . "</td>";
         echo "<td class='registros__td'>" . htmlspecialchars($deuda['monto']) . "</td>";
         echo "<td class='registros__td'>" . htmlspecialchars($deuda['estado']) . "</td>";
-		
-        if ($deuda['estado'] === 'no pagada') {
+        echo "<td class='registros__td'>" . htmlspecialchars($deuda['fecha']) . "</td>";
+        echo "<td class='registros__td'>" . htmlspecialchars($deuda['descripcion']) . "</td>";
+        
+        if ($deuda['estado'] == 'No Pagada') {
             echo "<td class='registros__td'>
-                    <form method='POST' action='pagar_deuda.php'>
+                    <form method='POST' action='index.php?vistas=pagar_deuda'>
                         <input type='hidden' name='deuda_id' value='" . htmlspecialchars($deuda['id']) . "'>
                         <button type='submit'>Pagar</button>
                     </form>
                   </td>";
         } else {
-            echo "<td>Pagada</td>";
+            echo "<td class='registros__td'>Pagada</td>";
         }
         echo "</tr>";
     }
 
     echo "</tbody></table></main></div>";
-	/**echo ;
-	echo "";**/
-
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
-?>

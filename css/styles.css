@@ -9,6 +9,12 @@
 	--amarilloLimon: #FAF4B6;
 	--amarilloPastel: #FFEB3B;
 	--azulRey: #000080;
+	--rojoSuave: #ffd4d4;
+    --rojoOscuro: #CC0000;
+    --rojoBrillante: #FF0000;
+	--verdeBrillante: #4CAF50;
+    --verdeSuave: #efffee;
+    --verdeOscuro: #2E7D32;
 }
 
 /**Globales**/
@@ -119,10 +125,39 @@ h4{
   pointer-events: none; 
 }
 
+/**Mensaje de Error**/
+
+.mensaje_error{
+	padding: 1rem;
+	background-color: var(--rojoSuave);
+	color: var(--verdeOscuro);
+	border-top: 4px solid var(--rojoBrillante);
+	border-bottom: 4px solid var(--rojoBrillante);
+	width: 80%;
+}
+
+.mensaje_error__p{
+	color: var(--rojoOscuro);
+}
+
+/**Mensaje de Confirmacion**/
+
+.mensaje_exito{
+	padding: 1rem;
+	background-color: var(--verdeSuave);
+	border-top: 4px solid var(--verdeBrillante);
+	border-bottom: 4px solid var(--verdeBrillante);
+}
+
+.mensaje_exito__p{
+	color: var(--verdeOscuro);
+}
+
 /**==NAVEGACION==**/
 
 .contenedor--bg{
 	background-color: var(--amarilloPastel);
+	margin-bottom: 2rem;
 }
 
 .navegacion{
@@ -137,6 +172,10 @@ h4{
 	text-decoration: none;
 	padding: 2rem;
 	color: var(--negro);
+}
+
+.navegacion__opcion:hover{
+	background-color: var(--amarilloOscuro);
 }
 
 .navegacion__opcion:visited{
@@ -155,7 +194,6 @@ h4{
 .dropdown {
 	position: relative;
 	display: inline-block;
-
 }
 
 .dropdown-content {
@@ -173,11 +211,17 @@ h4{
 	text-decoration: none;
 	display: block;
 }
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+	background-color: #ddd;
+}
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+	display: block;
+}
 
-.dropdown:hover .dropbtn {background-color: var(--amarilloOscuro);} 
+.dropdown:hover .dropbtn {
+	background-color: var(--amarilloOscuro);
+} 
 
 /**==CUERPO==**/
 
@@ -329,8 +373,7 @@ h4{
 .footer{
 	display: flex;
 	justify-content: center;
-
-
+	margin-top: 2rem;
 	padding: 1rem;
 	background-color: var(--azulRey);
 	color: var(--blanco);

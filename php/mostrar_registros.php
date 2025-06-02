@@ -1,7 +1,6 @@
 <?php
 require_once "main.php";
 
-try {
     $pdo = conexion();
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -62,7 +61,4 @@ try {
     echo "</tbody>";
     echo "</table>";
 
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
 ?>
