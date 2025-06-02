@@ -133,11 +133,12 @@ h4{
 	color: var(--verdeOscuro);
 	border-top: 4px solid var(--rojoBrillante);
 	border-bottom: 4px solid var(--rojoBrillante);
-	width: 80%;
+	margin-bottom: 1rem;
 }
 
 .mensaje_error__p{
 	color: var(--rojoOscuro);
+	margin-left: 1rem;
 }
 
 /**Mensaje de Confirmacion**/
@@ -147,10 +148,12 @@ h4{
 	background-color: var(--verdeSuave);
 	border-top: 4px solid var(--verdeBrillante);
 	border-bottom: 4px solid var(--verdeBrillante);
+	margin-bottom: 1rem;
 }
 
 .mensaje_exito__p{
 	color: var(--verdeOscuro);
+	margin-left: 1rem;
 }
 
 /**==NAVEGACION==**/
@@ -200,7 +203,7 @@ h4{
 	display: none;
 	position: absolute;
 	background-color: #f1f1f1;
-	min-width: 160px;
+	width: 100%;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	z-index: 1;
 }

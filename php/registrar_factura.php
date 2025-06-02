@@ -64,8 +64,8 @@ require_once "main.php";
         ':descripcion' => $descripcion
     ]);
 
-    echo "<div class='mensaje_error'>
-    <p class='mensaje_error__p'>La deuda se ha registrado correctamente.</p>
+    echo "<div class='mensaje_exito'>
+    <p class='mensaje_exito__p'>La deuda se ha registrado correctamente.</p>
     </div>";
 
     $stmt = $pdo->prepare("SELECT id, razonSocial, rif FROM proveedores");
