@@ -226,7 +226,32 @@ h4{
 	background-color: var(--amarilloOscuro);
 } 
 
-/**==CUERPO==**/
+/**==HOME==**/
+
+.home{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.home__enlace{
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 2rem;
+	color: var(--negro);
+	font-weight: 700;
+	
+}
+
+.home__deudas,
+.home__facturas{
+	font-size: 1.5rem;
+	display: flex;
+	gap: 2rem;
+	flex-direction: column;
+	text-align: center;
+}
+
 
 /**===LOGIN===**/
 
