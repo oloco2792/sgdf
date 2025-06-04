@@ -6,7 +6,7 @@
 	--amarillo: #F6E307;
 	--amarilloOscuro: #FAD514;
 	--naranja: #F99811;
-	--amarilloLimon: #FAF4B6;
+	--amarilloLimon: #fff4dc;
 	--amarilloPastel: #FFEB3B;
 	--azulRey: #000080;
 	--rojoSuave: #ffd4d4;
@@ -229,9 +229,9 @@ h4{
 /**==HOME==**/
 
 .home{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(2, 1fr);
 }
 
 .home__enlace{
@@ -240,7 +240,7 @@ h4{
 	padding: 2rem;
 	color: var(--negro);
 	font-weight: 700;
-	
+	font-size: 1.5rem;
 }
 
 .home__deudas,
@@ -252,6 +252,14 @@ h4{
 	text-align: center;
 }
 
+.home__boton{
+	min-height: 10rem;
+	background-color: var(--blanco);
+}
+
+.home__boton:hover{
+	background-color: var(--amarilloLimon);
+}
 
 /**===LOGIN===**/
 

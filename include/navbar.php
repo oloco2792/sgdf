@@ -1,6 +1,7 @@
 <div class="contenedor--bg">
     <nav class="contenedor navegacion">
 
+        <a class="navegacion__opcion" href="index.php?vistas=home">Inicio</a>
         <a class="navegacion__opcion" href="index.php?vistas=deuda_new">Registrar Deuda</a>
         <a class="navegacion__opcion" href="index.php?vistas=factura_new">Registrar Factura</a>
         <div class="dropdown">

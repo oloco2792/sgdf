@@ -12,7 +12,7 @@ require_once "main.php";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
-
+    echo '<button id="btnGenerarPDF">Generar PDF</button>';
     // Obtener los nombres de las columnas para crear la cabecera
     echo "<table class='registros__tabla'>";
     echo "<thead>";

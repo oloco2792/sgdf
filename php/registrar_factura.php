@@ -55,7 +55,7 @@ require_once "main.php";
 
     $fecha_formateada = date('Y-m-d', strtotime($fecha));
 
-    $stmt_deuda = $pdo->prepare("INSERT INTO facturas(proveedor_id, monto, fecha, estado, descripcion, fecha_actualizacion) VALUES (:proveedor_id, :monto, :fecha, :estado, :descripcion, '')");
+    $stmt_deuda = $pdo->prepare("INSERT INTO facturas(proveedor_id, monto, fecha, estado, descripcion, fecha_actualizacion, descripcion_pago) VALUES (:proveedor_id, :monto, :fecha, :estado, :descripcion, '', '')");
     $stmt_deuda->execute([
         ':proveedor_id' => $id_deudor,
         ':monto' => $monto,
@@ -65,7 +65,7 @@ require_once "main.php";
     ]);
 
     echo "<div class='mensaje_exito'>
-    <p class='mensaje_exito__p'>La deuda se ha registrado correctamente.</p>
+    <p class='mensaje_exito__p'>La factura se ha registrado correctamente.</p>
     </div>";
 
     $stmt = $pdo->prepare("SELECT id, razonSocial, rif FROM proveedores");

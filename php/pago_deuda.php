@@ -27,9 +27,27 @@ require_once "main.php";
     ':descripcion_pago' => $descripcion_pago
     ]);
 
+    $montoNew = $pdo->prepare("SELECT monto FROM facturas WHERE id = :deuda_id");
+    $montoNew->execute([
+        ":deuda_id" => $deuda_id
+    ]);
+
+    $resultado = $montoNew->fetch(PDO::FETCH_ASSOC);
+
+    if (!$resultado) {
+    echo "Factura no encontrada.";
+    }
+
+    if ($resultado['monto'] == 0) {
+    $stmt = $pdo->prepare("UPDATE facturas SET estado = 'Pagada' WHERE id = :deuda_id");
+    $stmt->execute([
+        ":deuda_id" => $deuda_id
+    ]);
+    }
+
     echo "<div class='mensaje_exito'>
-            <p class='mensaje_exito__p'>El pago se ha registrado correctamente.</p>
-        </div>";
+        <p class='mensaje_exito__p'>El pago se ha registrado correctamente.</p>
+    </div>";
     $pdo = null;
 
 ?>
