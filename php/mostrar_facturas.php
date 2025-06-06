@@ -12,6 +12,8 @@ require_once "main.php";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 
+    ob_start();
+
     echo "<table class='registros__tabla'>";
     echo "<thead>";
     echo "<tr>";
@@ -57,5 +59,18 @@ require_once "main.php";
 
     echo "</tbody>";
     echo "</table>";
+
+    // Captura todo el HTML impreso desde ob_start()
+    $html_tabla = ob_get_clean();
+    // --- FIN DE CAPTURA DEL HTML ---
+
+    // Ahora, el formulario para generar el PDF enviará el HTML capturado
+    echo '<form method="POST" action="./php/generar_pdf_deudas.php">';
+    echo '<input type="hidden" name="html_content" value="' . htmlspecialchars($html_tabla) . '">';
+    echo '<button class="boton" type="submit">Generar PDF</button>';
+    echo '</form>';
+
+    // Opcional: Si aún quieres mostrar la tabla en la página, puedes hacer un echo aquí
+    echo $html_tabla;
 
 ?>

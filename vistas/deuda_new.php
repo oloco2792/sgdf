@@ -11,8 +11,8 @@
             <label class="datosNombres" for="apellido">Apellido</label>
             <input class="activarInput" type="text" name="apellido" pattern="[a-zA-Z]{4, 20}" maxlength="20" required>
 
-            <label class="datosNombres" for="apodo">Apodo</label>
-            <input class="activarInput" type="text" name="apodo" pattern="[a-zA-Z]{4, 20}" maxlength="20">
+            <label class="" for="cedula">Cedula</label>
+            <input class="" type="number" name="cedula" pattern="[0-9]{1, 20}" maxlength="20" required>
         </div>
 
         <label class="" for="monto">Monto</label>
@@ -31,7 +31,7 @@
         <textarea class="" name="descripcion" pattern="{2, 200}" maxlength="200"></textarea>
         
     <div class="boton-derecha">
-        <input class="" type="submit" value="Ingresar">
+        <input class="boton" type="submit" value="Ingresar">
     </div>
     </form>
 

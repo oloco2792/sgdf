@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <?php include 'include/head.php';?>
+    <?php include 'include/title.php';?>
 </head>
 <body style="display: flex; flex-direction: column; justify-content: space-between">
     <?php
@@ -16,6 +17,21 @@
         if(!isset($_SESSION['user'])){
             include "./vistas/logout.php";
             exit();
+        }
+
+        if($_SESSION['user']=="user"
+        &&
+        $_GET['vistas']=="modificar_deudas" ||
+        $_GET['vistas']=="modificar_deuda" ||
+        $_GET['vistas']=="modificar_factura" ||
+        $_GET['vistas']=="modificar_factura" ||
+        $_GET['vistas']=="modificar_proveedores" ||
+        $_GET['vistas']=="modificar_proveedor" ||
+        $_GET['vistas']=="modificar_persona" ||
+        $_GET['vistas']=="modificar_personas" ||
+        $_GET['vistas']=="respaldar_db"
+        ){
+            $_GET['vistas'] = "home";
         }
         
         include "./include/navbar.php";

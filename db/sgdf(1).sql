@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 05-06-2025 a las 11:55:55
+-- Tiempo de generación: 06-06-2025 a las 10:21:47
 -- Versión del servidor: 8.4.4
 -- Versión de PHP: 8.3.6
 
@@ -39,15 +39,14 @@ CREATE TABLE IF NOT EXISTS `deudas` (
   `descripcion_pago` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `persona_id` (`persona_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `deudas`
 --
 
 INSERT INTO `deudas` (`id`, `persona_id`, `monto`, `fecha`, `estado`, `descripcion`, `fecha_actualizacion`, `descripcion_pago`) VALUES
-(1, 3, 0, '2025-05-31', 'No Pagada', 'aaaaaaaa', '2025-06-01', 'pepe'),
-(2, 3, 0, '2025-06-03', 'No Pagada', 'pago', '2025-06-03', 'pago');
+(3, 11, 10000, '2025-06-06', 'No Pagada', 'aaaaa', '', '');
 
 -- --------------------------------------------------------
 
@@ -67,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `facturas` (
   `descripcion_pago` varchar(200) COLLATE utf8mb4_spanish2_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `proveedor_id` (`proveedor_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `facturas`
@@ -75,7 +74,10 @@ CREATE TABLE IF NOT EXISTS `facturas` (
 
 INSERT INTO `facturas` (`id`, `proveedor_id`, `monto`, `fecha`, `estado`, `descripcion`, `fecha_actualizacion`, `descripcion_pago`) VALUES
 (1, 1, 123, '2025-05-27', '', 'asdasdads', '', ''),
-(2, 2, 0, '2025-06-03', 'Pagada', 'pago', '2025-06-03', 'pago');
+(2, 2, 0, '2025-06-03', 'Pagada', 'pago', '2025-06-03', 'pago'),
+(3, 3, 100, '2025-06-06', 'No Pagada', 'pago', '', ''),
+(4, 3, 200, '2025-06-06', 'No Pagada', 'aaaaaa', '', ''),
+(5, 3, 200, '2025-06-06', 'No Pagada', 'aaaaaa', '', '');
 
 -- --------------------------------------------------------
 
@@ -88,16 +90,35 @@ CREATE TABLE IF NOT EXISTS `personas` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `apellido` varchar(50) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `apodo` varchar(50) COLLATE utf8mb4_spanish2_ci NOT NULL,
+  `cedula` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `personas`
 --
 
-INSERT INTO `personas` (`id`, `nombre`, `apellido`, `apodo`) VALUES
-(3, 'Oliver', 'Castillo', 'Oloco');
+INSERT INTO `personas` (`id`, `nombre`, `apellido`, `cedula`) VALUES
+(11, 'holaaaa', 'hollaaaa', 28238238);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `preguntas`
+--
+
+DROP TABLE IF EXISTS `preguntas`;
+CREATE TABLE IF NOT EXISTS `preguntas` (
+  `pregunta_1` date NOT NULL,
+  `pregunta_2` varchar(30) COLLATE utf8mb4_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `preguntas`
+--
+
+INSERT INTO `preguntas` (`pregunta_1`, `pregunta_2`) VALUES
+('2017-03-14', 'simon');
 
 -- --------------------------------------------------------
 
@@ -111,15 +132,16 @@ CREATE TABLE IF NOT EXISTS `proveedores` (
   `razonSocial` varchar(50) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `rif` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `proveedores`
 --
 
 INSERT INTO `proveedores` (`id`, `razonSocial`, `rif`) VALUES
-(1, 'Tinito CA', 123456),
-(2, 'ConfiGuayana', 123456789);
+(1, 'aaaaaaaaaaaaaaaaaaa', 1234567890),
+(2, 'ConfiGuayana', 123456789),
+(3, 'Tinito CA', 123456789);
 
 -- --------------------------------------------------------
 
@@ -133,14 +155,15 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `user` varchar(40) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `pass` varchar(40) COLLATE utf8mb4_spanish2_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `user`, `pass`) VALUES
-(1, 'admin', 'admin1');
+(1, 'admin', 'hola1'),
+(2, 'user', 'user1');
 
 --
 -- Restricciones para tablas volcadas

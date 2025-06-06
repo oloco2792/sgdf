@@ -3,7 +3,7 @@ require_once "main.php";
 
     $nombre = limpiar_cadena($_POST['nombre']);
     $apellido = limpiar_cadena($_POST['apellido']);
-    $apodo = limpiar_cadena($_POST['apodo']);
+    $cedula = limpiar_cadena($_POST['cedula']);
     $monto = limpiar_cadena($_POST['monto']);
     $fecha = limpiar_cadena($_POST['fecha']);
     $estado = limpiar_cadena($_POST['estado']);
@@ -29,9 +29,9 @@ require_once "main.php";
         </div>";
         exit();
     }
-    if (verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]{3,40}", $apodo)) {
+    if (verificar_datos("[0-9]{3,20}", $cedula)) {
         echo "<div class='mensaje_error'>
-        <p class='mensaje_error__p'>El Apodo no coincide con el formato solicitado</p>
+        <p class='mensaje_error__p'>La cedula no coincide con el formato solicitado</p>
         </div>";
         exit();
     }
@@ -50,8 +50,8 @@ require_once "main.php";
     if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $id_deudor = $row['id'];
     }else{
-        $stmt_insert = $pdo->prepare("INSERT INTO personas (nombre, apellido, apodo) VALUES (:nombre, :apellido, :apodo)");
-        $stmt_insert->execute([':nombre' => $nombre, ':apellido' => $apellido, ':apodo' => $apodo]);
+        $stmt_insert = $pdo->prepare("INSERT INTO personas (nombre, apellido, cedula) VALUES (:nombre, :apellido, :cedula)");
+        $stmt_insert->execute([':nombre' => $nombre, ':apellido' => $apellido, ':cedula' => $cedula]);
 
         $id_deudor = $pdo->lastInsertId();
     }

@@ -14,4 +14,3 @@
     <link rel="preconnect" href="css/styles.css" as="style">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-    <?php include "./include/title.php" ?>

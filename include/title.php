@@ -1,8 +1,7 @@
 <?php
 
-$vista = $_GET['vistas'];
-
 function titulo($cadena){
+$vista = $_GET['vistas'];
 $vista_formateada = '';
 if(preg_match("/_/i", $cadena)){
     $vista_formateada = $cadena;
@@ -15,4 +14,7 @@ if(preg_match("/_/i", $cadena)){
 return $vista_formateada;
 }
 
-echo "<title>".titulo($vista)."</title>";
+if(isset($_GET['vistas'])){
+    echo "<title>".titulo($_GET['vistas'])."</title>";
+}
+

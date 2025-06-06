@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php include 'include/head.php';?>
-    <title>Inicio de Sesion</title>
+    
 </head>
 <body>
     <div class="caja_flex">
@@ -23,7 +23,7 @@
                     <input class="login__form__input" type="password" name="pass" pattern="[a-zA-Z0-9]{4, 20}" maxlength="20" required>  
                 </div>
                 <div class="boton-derecha">
-                    <input class="login__form__boton"type="submit" value="Ingresar">
+                    <input class="boton" type="submit" value="Ingresar">
                 </div>
 
                 <?php
@@ -37,7 +37,7 @@
                 </form>
             </div>
             <div class="login__footer">
-                <h4>Olvidó la contraseña? <a href=#>Haga Clic Aqui</a></h4>
+                <h4>Olvidó la contraseña? <a href="./vistas/recuperar_contraseña">Haga Clic Aqui</a></h4>
             </div>
         </main>
     </div>

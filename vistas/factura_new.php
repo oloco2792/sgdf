@@ -28,7 +28,7 @@
         <textarea class="" name="descripcion" pattern="{2, 200}" maxlength="200"></textarea>
         
     <div class="boton-derecha">
-        <input class="" type="submit" value="Ingresar">
+        <input class="boton" type="submit" value="Ingresar">
     </div>
     </form>
 
