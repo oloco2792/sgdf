@@ -1,10 +1,8 @@
 <?php
 
-$patron_fecha = '/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/';
-
 //Conexion de Base de datos
 function conexion(){
-$pdo = new PDO('mysql:host=localhost;dbname=sgdf', 'root', 'root1234');
+$pdo = new PDO('mysql:host=localhost;dbname=sgdf', 'root', '');
 return $pdo;
 }
 

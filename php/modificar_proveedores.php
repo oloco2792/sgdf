@@ -18,7 +18,7 @@ $stmt->execute();
 ob_start();
 
 // Crear la cabecera de la tabla con los nombres de las columnas
-echo "<table class='registros__tabla'>";
+echo "<table id='miTabla' class='registros__tabla'>";
 echo "<thead>";
 echo "<tr>";
 echo "<th class='registros__th'>Razon Social</th>";

@@ -1,24 +1,24 @@
 <?php
 require_once "./php/main.php";
 
-$persona_id = $_POST['persona_id'];
+$proveedor_id = $_POST['proveedor_id'];
 
     $pdo = conexion();
 
     // Obtener las deudas de la persona
-    $sql = "SELECT * FROM deudas WHERE persona_id = :persona_id";
+    $sql = "SELECT * FROM facturas WHERE proveedor_id = :proveedor_id";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([':persona_id' => $persona_id]);
+    $stmt->execute([':proveedor_id' => $proveedor_id]);
 
-    $stmtNombre = $pdo->prepare("SELECT nombre, apellido, cedula FROM personas WHERE id = :persona_id");
-    $stmtNombre->execute([':persona_id' => $persona_id]);
+    $stmtNombre = $pdo->prepare("SELECT nombre, apellido FROM personas WHERE id = :proveedor_id");
+    $stmtNombre->execute([':proveedor_id' => $proveedor_id]);
     $persona = $stmtNombre->fetch(PDO::FETCH_ASSOC);
-    $nombre_completo = $persona ? $persona['nombre'] .' '. $persona['apellido'].' (V-'. $persona['cedula'].')': 'Desconocido';
+    $nombre_completo = $persona ? $persona['nombre'] .' '. $persona['apellido'] : 'Desconocido';
 
     echo "<div class='posicion-relativa centrar-vertical'>";
     echo "<main class='contenedor caja'>";
     echo "<h1>Deudas de " . htmlspecialchars($nombre_completo) . "</h1>";
-    echo "<table id='miTabla' class='registros__tabla'>";
+    echo "<table id='miTabla'class='registros__tabla'>";
     echo "<thead>
             <tr>
                 <th class='registros__th'>ID Deuda</th>
@@ -41,10 +41,9 @@ $persona_id = $_POST['persona_id'];
         
         if ($deuda['estado'] == 'No Pagada') {
             echo "<td class='registros__td'>
-                    <form method='POST' action='index.php?vistas=pagar_deuda'>
-                    <input type='hidden' name='persona_id' value='" . htmlspecialchars($deuda['id']) . "'>
-                    <input type='hidden' name='deuda_id' value='" . htmlspecialchars($deuda['id']) . "'>
-                        <button type='submit'>Pagar</button>
+                    <form class='FormularioAjax' method='POST' action='./php/eliminar_factura.php'>
+                        <input type='hidden' name='factura_id' value='" . htmlspecialchars($deuda['id']) . "'>
+                        <button type='submit'>Eliminar</button>
                     </form>
                   </td>";
         } else {

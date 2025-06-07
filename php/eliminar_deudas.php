@@ -53,7 +53,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
     // Añadir el botón para ver las deudas de esa persona
     echo "<td class='registros__td'>
-                    <form method='POST' action='index.php?vistas=visualizar_deudas'>
+                    <form method='POST' action='index.php?vistas=eliminar_deudas_ver'>
                         <input type='hidden' name='persona_id' value='" . htmlspecialchars($row['id']) . "'>
                         <button type='submit'>Ver Deudas</button>
                     </form>

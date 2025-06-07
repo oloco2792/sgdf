@@ -14,7 +14,7 @@ require_once "main.php";
 
     ob_start();
 
-    echo "<table class='registros__tabla'>";
+    echo "<table id='miTabla' class='registros__tabla'>";
     echo "<thead>";
     echo "<tr>";
 

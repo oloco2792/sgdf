@@ -37,6 +37,15 @@
                 <a href="index.php?vistas=modificar_facturas">Modificar Facturas</a>
             </div>
         </div>';
+        echo'<div class="dropdown">
+            <button class="dropbtn navegacion__opcion">Eliminar Registros</button>
+            <div class="dropdown-content">
+                <a href="index.php?vistas=eliminar_personas">Eliminar Personas</a>
+                <a href="index.php?vistas=eliminar_proveedores">Eliminar Proveedores</a>
+                <a href="index.php?vistas=eliminar_deudas">Eliminar Deudas</a>
+                <a href="index.php?vistas=eliminar_facturas">Eliminar Facturas</a>
+            </div>
+        </div>';
             echo '<a class="navegacion__opcion" href="index.php?vistas=respaldar_db">Respaldo</a>';
         }
 

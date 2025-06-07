@@ -1,6 +1,16 @@
 <?php
 require_once "./php/main.php";
+$persona_id = $_POST['persona_id'];
 $deuda = $_POST['deuda_id'];
+
+    $sql = "SELECT * FROM deudas WHERE persona_id = :persona_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':persona_id' => $persona_id]);
+
+    $stmtNombre = $pdo->prepare("SELECT nombre, apellido, cedula FROM personas WHERE id = :persona_id");
+    $stmtNombre->execute([':persona_id' => $persona_id]);
+    $persona = $stmtNombre->fetch(PDO::FETCH_ASSOC);
+    $nombre_completo = $persona ? $persona['nombre'] .' '. $persona['apellido'].' (V-'. $persona['cedula'].')': 'Desconocido';
 ?>
 
 <div class="posicion-relativa centrar-vertical">

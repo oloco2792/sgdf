@@ -205,6 +205,13 @@ h4{
 	color: var(--negro);
 }
 
+.navegacion__form{
+	background-color: none;
+	text-transform: uppercase;
+	padding: 2rem;
+	color: var(--negro);
+}
+
 .navegacion__opcion:hover{
 	background-color: var(--amarilloOscuro);
 }

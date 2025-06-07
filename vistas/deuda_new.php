@@ -11,7 +11,7 @@
             <label class="datosNombres" for="apellido">Apellido</label>
             <input class="activarInput" type="text" name="apellido" pattern="[a-zA-Z]{4, 20}" maxlength="20" required>
 
-            <label class="" for="cedula">Cedula</label>
+            <label class="" for="cedula">Cedula (V-)</label>
             <input class="" type="number" name="cedula" pattern="[0-9]{1, 20}" maxlength="20" required>
         </div>
 

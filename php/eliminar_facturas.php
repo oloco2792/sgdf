@@ -6,8 +6,8 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // Consulta SQL con suma de las deudas vinculadas a cada persona, excluyendo las pagadas
 $sql = "SELECT p.*, IFNULL(SUM(d.monto), 0) AS deuda_total
-            FROM personas p
-            LEFT JOIN deudas d ON p.id = d.persona_id AND d.estado != 'pagada'
+            FROM proveedores p
+            LEFT JOIN facturas d ON p.id = d.proveedor_id AND d.estado != 'pagada'
             GROUP BY p.id";
 
 $stmt = $pdo->prepare($sql);
@@ -18,7 +18,7 @@ $stmt->execute();
 ob_start();
 
 // Obtener los nombres de las columnas para crear la cabecera
-echo "<table id='miTabla' class='registros__tabla'>";
+echo "<table id='miTabla'class='registros__tabla'>";
 echo "<thead>";
 echo "<tr>";
 
@@ -53,12 +53,11 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
     // Añadir el botón para ver las deudas de esa persona
     echo "<td class='registros__td'>
-                    <form method='POST' action='index.php?vistas=visualizar_deudas'>
-                        <input type='hidden' name='persona_id' value='" . htmlspecialchars($row['id']) . "'>
-                        <button type='submit'>Ver Deudas</button>
-                    </form>
-                </td>";
-
+                <form method='POST' action='index.php?vistas=eliminar_facturas_ver'>
+                    <input type='hidden' name='proveedor_id' value='" . htmlspecialchars($row['id']) . "'>
+                    <button type='submit'>Ver factura</button>
+                </form>
+            </td>";
     echo "</tr>";
 }
 

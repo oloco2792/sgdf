@@ -18,7 +18,7 @@ $proveedor_id = $_POST['proveedor_id'];
     echo "<div class='posicion-relativa centrar-vertical'>";
     echo "<main class='contenedor caja'>";
     echo "<h1>Facturas de " . htmlspecialchars($nombre_completo) . "</h1>";
-    echo "<table class='registros__tabla'>";
+    echo "<table id='miTabla' class='registros__tabla'>";
     echo "<thead>
             <tr>
                 <th class='registros__th'>ID Deuda</th>
