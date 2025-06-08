@@ -10,9 +10,8 @@
     if(!isset($_GET["vistas"]) || $_GET["vistas"]==""){
         $_GET["vistas"] = "login";
     }
-
     if(is_file("./vistas/".$_GET["vistas"].".php") && $_GET["vistas"]!="login" && $_GET["vistas"]!="404"){
-        
+                
         //Cerrar Sesion
         if(!isset($_SESSION['user'])){
             include "./vistas/logout.php";
@@ -20,8 +19,8 @@
         }
 
         if($_SESSION['user']!=="admin"
-        &&
-        ($_GET['vistas']=="modificar_deudas" ||
+        &&(
+        $_GET['vistas']=="modificar_deudas" ||
         $_GET['vistas']=="modificar_deuda" ||
         $_GET['vistas']=="modificar_factura" ||
         $_GET['vistas']=="modificar_factura" ||
@@ -29,16 +28,26 @@
         $_GET['vistas']=="modificar_proveedor" ||
         $_GET['vistas']=="modificar_persona" ||
         $_GET['vistas']=="modificar_personas" ||
-        $_GET['vistas']=="respaldar_db")
-        ){
+        $_GET['vistas']=="respaldar_db"
+        )){
             $_GET['vistas'] = "home";
         }
         
         include "./include/navbar.php";
 
+        echo '<div class="posicion-relativa centrar-vertical">';
+        if($_GET['vistas'] !== "Inicio"){
+            echo '<main class="contenedor caja">';
+        }else{
+            echo '<main class="contenedor">';
+        }
         include "./vistas/".$_GET["vistas"].".php";
 
         include "./include/script.php";
+
+        echo '</main>';
+        echo '</div>';
+
 
         include "./include/footer.php";
 
@@ -50,6 +59,5 @@
         }
     }
     ?>
-
 </body>
 </html>

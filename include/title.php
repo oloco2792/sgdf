@@ -1,5 +1,4 @@
 <?php
-
 function titulo($cadena){
 $vista = $_GET['vistas'];
 $vista_formateada = '';

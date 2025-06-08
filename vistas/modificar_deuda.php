@@ -14,8 +14,6 @@ $persona_id = $_POST['persona_id'];
     $deudaOld = $stmtNombre->fetch(PDO::FETCH_ASSOC);
     $deudaTitulo = $deudaOld['monto'];
 ?>
-<div class="posicion-relativa centrar-vertical">
-    <main class="contenedor caja">
     <h1>Modificar deuda de <?php echo $nombre_completo ?> de <?php echo $deudaTitulo?></h1>
     <div class="form-rest"></div>
     <form class="registro FormularioAjax" method="POST" action="./php/modificar_deuda.php" autocomplete="off">
@@ -37,9 +35,5 @@ $persona_id = $_POST['persona_id'];
         <label class="" for="descripcion">Descripcion</label>
         <textarea class="" name="descripcion" maxlength="200"></textarea>
         
-    <div class="boton-derecha">
-        <input class="" type="submit" value="Ingresar">
-    </div>
+    <?php include_once "./include/botones_form.php" ?>
     </form>
-    </main>
-</div>

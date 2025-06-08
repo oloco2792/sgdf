@@ -7,7 +7,6 @@ use Dompdf\Options;
 if (isset($_POST['html_content'])) {
     $html_recibido = $_POST['html_content'];
 
-    // 1. Configurar opciones de Dompdf
     $options = new Options();
     $options->set('isHtml5ParserEnabled', true); 
     $options->set('isRemoteEnabled', true);   
@@ -51,7 +50,6 @@ if (isset($_POST['html_content'])) {
     </body>
     </html>';
 
-
     $dompdf->loadHtml($html_para_pdf);
 
     $dompdf->setPaper('letter', 'portrait');
@@ -62,8 +60,10 @@ if (isset($_POST['html_content'])) {
 
 } else {
     // Si no se recibió el contenido HTML, puedes redirigir o mostrar un mensaje de error
-    echo "No se recibió el contenido de la tabla para generar el PDF.";
-    // header('Location: ../index.php'); // Redirigir a la página principal
+    echo "<div class='mensaje_error'>
+        <p class='mensaje_error__p'>No se recibió el contenido de la tabla para generar el PDF</p>
+    </div>";
+    // header('Location: ../index.php?vistas=Inicio'); // Redirigir a la página principal
     exit;
 }
 

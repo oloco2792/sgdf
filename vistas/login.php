@@ -2,11 +2,9 @@
 <html lang="en">
 <head>
     <?php include 'include/head.php';?>
-    
 </head>
 <body>
     <div class="caja_flex">
-
         <section class="izquierda">
         </section>
         <main class="derecha login">
@@ -25,7 +23,6 @@
                 <div class="boton-derecha">
                     <input class="boton" type="submit" value="Ingresar">
                 </div>
-
                 <?php
                     if(isset($_POST['user']) && isset($_POST['pass'])){
                         require_once './php/main.php';
@@ -33,7 +30,6 @@
                         require_once './php/iniciar_sesion.php';
                     }
                 ?>
-
                 </form>
             </div>
             <div class="login__footer">

@@ -27,8 +27,6 @@ $check_user = $check_user -> query("SELECT user FROM usuarios WHERE user = '$use
 $check_pass = conexion();
 $check_pass = $check_pass -> query("SELECT pass FROM usuarios WHERE pass = '$pass'");
 
-
-
 if($check_user -> rowCount() == 1 && $check_pass -> rowCount() == 1){
     $check_user = $check_user->fetch();
     $check_pass = $check_pass->fetch();
@@ -38,9 +36,9 @@ if($check_user -> rowCount() == 1 && $check_pass -> rowCount() == 1){
         $_SESSION['pass'] = $check_pass['pass'];
 
         if(headers_sent()){
-            echo "<script window.location.href='index.php?vistas=home';></script>";
+            echo "<script window.location.href='index.php?vistas=Inicio';></script>";
         }else{
-            header("Location: index.php?vistas=home");
+            header("Location: index.php?vistas=Inicio");
     }}
 }else{ 
     echo "<div class='mensaje_error'>

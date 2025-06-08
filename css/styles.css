@@ -418,6 +418,24 @@ h4{
 	text-transform: uppercase;
 }
 
+.registros__botones {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+.registros__boton--ver {
+	background-color: #ADEBB3;
+}
+.registros__boton--modificar {
+	background-color: #f39c12;
+}
+.registros__boton--eliminar {
+	background-color: #ff5454;
+}
+.registros__boton--pagar {
+	background-color: var(--verdeBrillante);
+}
+
 .filters {
 	margin-bottom: 20px;
 }
@@ -429,6 +447,8 @@ h4{
 .filters__boton {
 	margin-right: 5px;
 }
+
+/**==LISTAS==**/
 
 /**==FOOTER==**/
 

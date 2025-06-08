@@ -14,32 +14,26 @@ $persona_id = $_POST['persona_id'];
     $deudaOld = $stmtNombre->fetch(PDO::FETCH_ASSOC);
     $deudaTitulo = $deudaOld['monto'];
 ?>
-<div class="posicion-relativa centrar-vertical">
-    <main class="contenedor caja">
-    <h1>Modificar deuda de <?php echo $nombre_completo ?> de <?php echo $deudaTitulo?></h1>
-    <div class="form-rest"></div>
-    <form class="registro FormularioAjax" method="POST" action="./php/modificar_deuda.php" autocomplete="off">
+<h1>Modificar deuda de <?php echo $nombre_completo ?> de <?php echo $deudaTitulo?></h1>
+<div class="form-rest"></div>
+<form class="registro FormularioAjax" method="POST" action="./php/modificar_deuda.php" autocomplete="off">
 
-        <input class="" type="hidden" name="deuda_id" value="<?php echo $deuda_id ?>">    
+    <input class="" type="hidden" name="deuda_id" value="<?php echo $deuda_id ?>">    
 
-        <label class="" for="monto">Monto</label>
-        <input class="" type="number" name="monto" pattern="[0-9]{1, 20}" maxlength="20" required>
+    <label class="" for="monto">Monto</label>
+    <input class="" type="number" name="monto" pattern="[0-9]{1, 20}" maxlength="20" required>
 
-        <label class="" for="fecha">Fecha</label>
-        <input class="" type="date" name="fecha" pattern="[0-9]{1, 20}" maxlength="20" required>
+    <label class="" for="fecha">Fecha</label>
+    <input class="" type="date" name="fecha" pattern="[0-9]{1, 20}" maxlength="20" required>
 
-        <label for="estado">Estado</label>
-        <select name="estado" required>
-            <option value="No Pagada"selected>No Pagada</option>
-            <option value="Pagada">Pagada</option>    
-        </select>
+    <label for="estado">Estado</label>
+    <select name="estado" required>
+        <option value="No Pagada"selected>No Pagada</option>
+        <option value="Pagada">Pagada</option>    
+    </select>
 
-        <label class="" for="descripcion">Descripcion</label>
-        <textarea class="" name="descripcion" maxlength="200"></textarea>
-        
-    <div class="boton-derecha">
-        <input class="" type="submit" value="Ingresar">
-    </div>
-    </form>
-    </main>
+    <label class="" for="descripcion">Descripcion</label>
+    <textarea class="" name="descripcion" maxlength="200"></textarea>
+    
+    <?php include "./include/botones_form.php";?>
 </div>

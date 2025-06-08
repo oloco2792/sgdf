@@ -1,5 +1,3 @@
-<div class="posicion-relativa centrar-vertical">
-<main class="contenedor caja">
     <h1>Registrar Deuda</h1>
     <div class="form-rest"></div>
     <form class="registro FormularioAjax" method="POST" action="./php/registrar_deuda.php" autocomplete="off">
@@ -30,9 +28,7 @@
         <label class="" for="descripcion">Descripcion</label>
         <textarea class="" name="descripcion" pattern="{2, 200}" maxlength="200"></textarea>
         
-    <div class="boton-derecha">
-        <input class="boton" type="submit" value="Ingresar">
-    </div>
+        <?php include_once "./include/botones_form.php" ?>
     </form>
 
 </main>

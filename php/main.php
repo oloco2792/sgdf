@@ -2,7 +2,7 @@
 
 //Conexion de Base de datos
 function conexion(){
-$pdo = new PDO('mysql:host=localhost;dbname=sgdf', 'root', '');
+$pdo = new PDO('mysql:host=localhost;dbname=sgdf', 'root', 'root1234');
 return $pdo;
 }
 
