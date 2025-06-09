@@ -4,20 +4,21 @@ const vistas = params.get('vistas');
 
 boton.addEventListener('click', function() {
 
-    switch(vistas){
-        case "Ver_Deudas":
-            window.location.href='index.php?vistas=Nueva_Deuda';
-        break;
-        case "Modificar_Deudas_Registros":
-            window.location.href='index.php?vistas=Nueva_Deuda';
-        break;
-        case "Eliminar_Deudas_Registros":
-            window.location.href='index.php?vistas=Nueva_Deuda';
-        break;
-    }
-
-    if(vistas==="Nueva_Deuda" || 
-        vistas=="Pagar_Deuda"){
+if(vistas=="Ver_Deudas" || vistas=="Modificar_Deudas_Ver" || vistas=="Eliminar_Deudas_Ver" || vistas=="Deudas_Detalladas"){
+        window.location.href='index.php?vistas=Nueva_Deuda';
+}else if(vistas=="Ver_Facturas" || vistas=="Modificar_Facturas_Ver" || vistas=="Eliminar_Facturas_Ver" || vistas=="Facturas_Detalladas"){
+        window.location.href='index.php?vistas=Nueva_Factura';
+}else if(vistas=="Ver_Personas"){
+        window.location.href='index.php?vistas=Nueva_Persona';
+}
+    if(vistas=="Nueva_Deuda" || 
+        vistas=="Pagar_Deuda" ||
+        vistas=="Modificar_Deuda" ||
+        vistas=="Pagar_Deuda" ||
+        vistas=="Nueva_Factura"||
+        vistas=="Modificar_Factura"||
+        vistas=="Nueva_Persona"||
+        vistas=="Modificar_Persona"){
         window.location.href='index.php?vistas=Inicio';
     }
 });

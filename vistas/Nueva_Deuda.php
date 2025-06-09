@@ -20,9 +20,9 @@
         <input class="" type="date" name="fecha" pattern="[0-9]{1, 20}" maxlength="20" required>
 
         <label for="estado">Estado</label>
-        <select name="estado" required>
-            <option value="No Pagada"selected>No Pagada</option>
-            <option value="Pagada">Pagada</option>    
+        <select class="registros__select" name="estado" required>
+            <option class="" value="No Pagada"selected>No Pagada</option>
+            <option class="" value="Pagada">Pagada</option>    
         </select>
 
         <label class="" for="descripcion">Descripcion</label>

@@ -4,10 +4,11 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
+$nombre = $_POST['nombre_completo'];
+
 if (isset($_POST['html_content'])) {
     $html_recibido = $_POST['html_content'];
 
-    // 1. Configurar opciones de Dompdf
     $options = new Options();
     $options->set('isHtml5ParserEnabled', true); 
     $options->set('isRemoteEnabled', true);   
@@ -46,11 +47,10 @@ if (isset($_POST['html_content'])) {
     <body>
         <h1>SUMINISTRO DE ALIMENTOS DON GREGO C.A</h1>
         <h2>J-409523802</h2>
-        <h2>Registro de Facturas</h2>
+        <h2>Registro Total de Deudas de '.$nombre.'</h2>
         ' . $html_recibido . '
     </body>
     </html>';
-
 
     $dompdf->loadHtml($html_para_pdf);
 
@@ -62,8 +62,10 @@ if (isset($_POST['html_content'])) {
 
 } else {
     // Si no se recibió el contenido HTML, puedes redirigir o mostrar un mensaje de error
-    echo "No se recibió el contenido de la tabla para generar el PDF.";
-    // header('Location: ../index.php'); // Redirigir a la página principal
+    echo "<div class='mensaje_error'>
+        <p class='mensaje_error__p'>No se recibió el contenido de la tabla para generar el PDF</p>
+    </div>";
+    // header('Location: ../index.php?vistas=Inicio'); // Redirigir a la página principal
     exit;
 }
 

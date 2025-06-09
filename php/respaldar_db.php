@@ -20,7 +20,6 @@ $filepath = $backup_dir . $filename;
 // En Windows, es la ruta dentro de tu instalación de MySQL (ej: C:\xampp\mysql\bin\mysqldump.exe)
 $mysqldump_path = 'C:\wamp64\bin\mysql\mysql8.3.0\bin\mysqldump.exe'; // O la ruta correcta para tu servidor
 
-// Verifica si mysqldump existe
 if (!file_exists($mysqldump_path)) {
     die("Error: mysqldump no encontrado en la ruta especificada: " . htmlspecialchars($mysqldump_path) . ". Por favor, verifica la ruta.");
 }
@@ -37,12 +36,14 @@ $return_var = 0;
 exec($command, $output, $return_var); 
 
 if ($return_var === 0) {
-    // Si la ejecución fue exitosa, ahora puedes ofrecer el archivo para descarga o mostrar un mensaje
     header('Content-Type: application/sql');
     header('Content-Disposition: attachment; filename="' . basename($filepath) . '"');
     header('Content-Length: ' . filesize($filepath));
     readfile($filepath);
-    unlink($filepath); // Opcional: eliminar el archivo del servidor después de la descarga
+    unlink($filepath);
+
+    echo "<script window.location.href='index.php?vistas=Inicio&mensaje=respaldar_db_exito';></script>";
+    //header("Location: ../index.php?vistas=Inicio&mensaje=respaldar_db_exito");
     exit;
 } else {
     echo "<h1>Error al generar el respaldo de la base de datos.</h1>";
@@ -52,5 +53,9 @@ if ($return_var === 0) {
     echo htmlspecialchars(implode("\n", $output));
     echo "</pre>";
     echo "<p>Verifica los permisos del directorio de respaldo, la ruta a mysqldump y las credenciales de la base de datos.</p>";
+    
+    header("Location: ../index.php?vistas=Inicio&mensaje=respaldar_db_error");
+    exit;
 }
+
 ?>

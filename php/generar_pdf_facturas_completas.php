@@ -46,7 +46,7 @@ if (isset($_POST['html_content'])) {
     <body>
         <h1>SUMINISTRO DE ALIMENTOS DON GREGO C.A</h1>
         <h2>J-409523802</h2>
-        <h2>Registro Total de Proveedores Registrados</h2>
+        <h2>Registro de Total de Facturas</h2>
         ' . $html_recibido . '
     </body>
     </html>';

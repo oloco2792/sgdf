@@ -18,13 +18,13 @@ $monto = $stmt->fetch(PDO::FETCH_ASSOC);
 $stmtNombre = $pdo->prepare("SELECT nombre, apellido, cedula FROM personas WHERE id = :persona_id");
 $stmtNombre->execute([':persona_id' => $persona_id]);
 $persona = $stmtNombre->fetch(PDO::FETCH_ASSOC);
-$nombre_completo = $persona ? $persona['nombre'] .' '. $persona['apellido'].' (V-'. $persona['cedula'].') de '. $monto['monto'] .'Bs.': 'Desconocido';
+$nombre_completo = $persona ? $persona['nombre'] .' '. $persona['apellido'].' (V-'. $persona['cedula'].') de '. $monto['monto'] .'Bs. (ID: '.$deuda.')': 'Desconocido';
 
 ?>
 
 <h1>Pagar deuda de <?=$nombre_completo?></h1>
 <div class="form-rest"></div>
-<form class="registro FormularioAjax" method="POST" action="./php/pago_deuda.php" autocomplete="off">
+<form class="registro FormularioAjax" method="POST" action="./php/pagar_deuda.php" autocomplete="off">
 
     <?php echo "<input type='hidden' name='deuda_id' value='".$deuda. "'>";?>
 

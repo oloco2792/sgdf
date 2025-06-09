@@ -58,5 +58,4 @@ include "./include/botones_listas.php";
 
 echo $html_tabla;
 ?>                 
-</table>
 

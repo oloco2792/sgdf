@@ -27,7 +27,6 @@ require_once "main.php";
         exit();
     }
 
-
     $stmt = $pdo->prepare("UPDATE personas SET
     nombre = :nombre,
     apellido = :apellido,
