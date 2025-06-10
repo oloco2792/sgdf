@@ -41,9 +41,6 @@ if ($return_var === 0) {
     header('Content-Length: ' . filesize($filepath));
     readfile($filepath);
     unlink($filepath);
-
-    echo "<script window.location.href='index.php?vistas=Inicio&mensaje=respaldar_db_exito';></script>";
-    //header("Location: ../index.php?vistas=Inicio&mensaje=respaldar_db_exito");
     exit;
 } else {
     echo "<h1>Error al generar el respaldo de la base de datos.</h1>";
@@ -52,10 +49,10 @@ if ($return_var === 0) {
     echo "<p>Salida del comando:</p><pre>";
     echo htmlspecialchars(implode("\n", $output));
     echo "</pre>";
+    
     echo "<p>Verifica los permisos del directorio de respaldo, la ruta a mysqldump y las credenciales de la base de datos.</p>";
     
     header("Location: ../index.php?vistas=Inicio&mensaje=respaldar_db_error");
     exit;
 }
-
-?>
+?>   

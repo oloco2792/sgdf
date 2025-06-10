@@ -313,7 +313,7 @@ h4{
 }
 
 .izquierda{
-	height: 100vh;
+	height: 200vh;
 	width: 60%;
     background-image: url(../img/bg.jpg);
 	background-repeat: round;
@@ -406,6 +406,11 @@ h4{
 	justify-content: space-between;
 }
 
+.registro__nuevo--usuario{
+	display: flex;
+	justify-content: space-evenly;
+}
+
 /**==VER REGISTROS==**/
 
 .registros__tabla {
@@ -458,6 +463,18 @@ h4{
 
 .filters__boton {
 	margin-right: 5px;
+}
+
+.recuperar_contraseña{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.recuperar_contraseña_img{
+	height: 5rem;
+	width: 5rem;
 }
 
 /**==LISTAS==**/

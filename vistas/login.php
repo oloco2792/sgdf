@@ -13,6 +13,17 @@
             </div>
             <div class="caja width90 fondo-blanco">
                 <div class="login__form">
+                <div>
+                <?php
+                if(isset($_GET['exito'])){
+                    if($_GET['exito']=="cambio_pass"){
+                        echo "<div class='mensaje_exito'>
+                        <p class='mensaje_exito__p'>La contraseña se ha cambiado con exito.</p>
+                        </div>";
+                    }
+                }
+                ?>
+                </div>
                 <form class="login__form__campos" method="POST" action="" autocomplete="off">
                     <label class="login__form__label" for="user">Usuario</label>
                     <input class="login__form__input"type="text" name="user" pattern="[a-zA-Z0-9]{4, 20}" maxlength="20" required>
@@ -28,14 +39,8 @@
                         require_once './php/main.php';
 
                         require_once './php/iniciar_sesion.php';
+
                     }
+
+                    include "./include/login_footer.php";
                 ?>
-                </form>
-            </div>
-            <div class="login__footer">
-                <h4>Olvidó la contraseña? <a href="./vistas/recuperar_contraseña">Haga Clic Aqui</a></h4>
-            </div>
-        </main>
-    </div>
-</body>
-</html>

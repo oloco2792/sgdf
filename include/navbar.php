@@ -36,10 +36,10 @@
         <button class="dropbtn navegacion__opcion">Administrador</button>
         <div class="dropdown-content">
             <a href="index.php?vistas=Registrar_Usuario">Registrar Usuario</a>
-            <a href="index.php?vistas=Ver_Usuarios">Ver Usuarios</a>
+            <!--a href="index.php?vistas=Ver_Usuarios">Ver Usuarios</a-->
             '.'<a class="navegacion__opcion--puntero">
-            <form class="navegacion__opcion--puntero confirmacion" method="POST" action="./php/respaldar_db.php">
-            <input class="navegacion__opcion--puntero navegacion__form" type="submit" value="Respaldar DB">
+            <form class="navegacion__opcion--puntero confirmacion redireccion" method="POST" action="./php/respaldar_db.php">
+            <input class="navegacion__opcion--puntero navegacion__form" type="submit" value="Respaldar DB" value="_blank">
             </form></a>
         </div>
         </div>';

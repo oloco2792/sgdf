@@ -6,44 +6,59 @@ $pass = limpiar_cadena($_POST['pass']);
 
 //Verificar Datos
 if($user == "" || $pass == ""){
-    echo '<p>Uno de los campos obligatorios no ha sido llenados</p>';
+    echo "<div class='mensaje_error'>
+        <p class='mensaje_error__p'>Uno de los campos obligatorios no ha sido llenados</p>
+    </div>";
+    include "./include/login_footer.php";
     exit();
 }
 
 //Verificando Integridad de los Datos
 if(verificar_datos("[a-zA-Z0-9]{3,40}", $user)){
-    echo "<p>El Usuario no coincide con el formato solicitado</p>";
+    echo "<div class='mensaje_error'>
+        <p class='mensaje_error__p'>El usuario no coincide con el formato solicitado.</p>
+    </div>";
+    include "./include/login_footer.php";
     exit();
 }
 
 if(verificar_datos("[a-zA-Z0-9]{3,40}", $pass)){
-    echo "<p>La contraseña no coincide con el formato solicitado</p>";
+    echo "<div class='mensaje_error'>
+        <p class='mensaje_error__p'>La contraseña no coincide con el formato solicitado.</p>
+    </div>";
+    include "./include/login_footer.php";
     exit();
 }
 
-$check_user = conexion();
-$check_user = $check_user -> query("SELECT user FROM usuarios WHERE user = '$user'");
+$pdo = conexion();
+$check_user = $pdo -> query("SELECT * FROM usuarios WHERE user = '$user'");
 
-$check_pass = conexion();
-$check_pass = $check_pass -> query("SELECT pass FROM usuarios WHERE pass = '$pass'");
+if($check_user->rowCount()==1){
 
-if($check_user -> rowCount() == 1 && $check_pass -> rowCount() == 1){
-    $check_user = $check_user->fetch();
-    $check_pass = $check_pass->fetch();
+    $check_user=$check_user->fetch();
 
-    if($check_user['user'] == $user && $check_pass['pass'] == $pass){
+    if($check_user['user']==$user && password_verify($pass, $check_user['pass'])){
+
         $_SESSION['user'] = $check_user['user'];
-        $_SESSION['pass'] = $check_pass['pass'];
 
         if(headers_sent()){
-            echo "<script window.location.href='index.php?vistas=Inicio';></script>";
+            echo "<script> window.location.href='index.php?vistas=Inicio'; </script>";
         }else{
             header("Location: index.php?vistas=Inicio");
-    }}
-}else{ 
+        }
+
+    }else{
+            echo "<div class='mensaje_error'>
+            <p class='mensaje_error__p'>Usuario o Clave Incorrectas</p>
+        </div>";
+        include "./include/login_footer.php";
+        exit();
+    }
+}else{
     echo "<div class='mensaje_error'>
-    <p class='mensaje_error__p'>Usuario o Clave Incorrecta</p>
+        <p class='mensaje_error__p'>Ha ocurrido un error inesperado.</p>
     </div>";
-};
-$check_user = null;
-$check_pass = null;
+    include "./include/login_footer.php";
+    exit();
+}
+$pdo=null;

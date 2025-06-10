@@ -2,7 +2,7 @@
     session_destroy();
 
     if(headers_sent()){
-            echo "<script window.location.href='index.php?vistas=login';></script>";
+            echo "<script window.location.href='index.php?vistas=Login';></script>";
         }else{
-            header("Location: index.php?vistas=login");
+            header("Location: index.php?vistas=Login");
     }

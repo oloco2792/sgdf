@@ -39,19 +39,36 @@ $error = $_GET['error'];
     <main class="contenedor caja pass_rec">
         <div class="recuperar_contraseña">
             <img class="recuperar_contraseña_img" src="../img/favicon.ico">
-            <h1>Recuperar Contraseña</h1>
+            <h1>Cambiar Contraseña</h1>
         </div>
             <div class="form-rest">
                 <?php
-                if($error = "true"){
-                    echo "<div class='mensaje_error'>
-                    <p class='mensaje_error__p'>El Usuario no esta registrado</p>
-                    </div>"; }
+                if(isset($_GET['error'])){
+                    if($_GET['error']=="pass_incorrectas"){
+                        echo "<div class='mensaje_error'>
+                        <p class='mensaje_error__p'>Las Contraseñas no son iguales.</p>
+                        </div>";
+                    }else if($_GET['error']=="pass_cofirm"){
+                        echo "<div class='mensaje_error'>
+                        <p class='mensaje_error__p'>La confirmacion de contraseña no coincide con el formato solicitado.</p>
+                        </div>";
+                    }else if($_GET['error']=="pass"){
+                        echo "<div class='mensaje_error'>
+                        <p class='mensaje_error__p'>La contraseña no coincide con el formato solicitado.</p>
+                        </div>";
+                    }
+                }
                 ?>
             </div>
-            <form class="registro confirmacion" method="POST" action="../php/recuperar_contraseña.php" autocomplete="off">
-                <label class="" for="user">Usuario</label>
-                <input class="" type="text" name="user" maxlength="20" required>
+            <form class="registro confirmacion" method="POST" action="../php/nueva_contraseña.php" autocomplete="off">
+
+                <input class="" type="hidden" name="user" value="<?=$_GET['user']?>" maxlength="20" required>
+
+                <label class="" for="pass">Contraseña</label>
+                <input class="" type="password" name="pass" maxlength="20" required>
+
+                <label class="" for="pass_confirm">Confirmar Contraseña</label>
+                <input class="" type="password" name="pass_confirm" maxlength="20" required>
                 
             <div class="botones">
                 <button class="boton" value="Regresar"><a class="text-deco-none" href="../index.php?vistas=login">Regresar</a></button>

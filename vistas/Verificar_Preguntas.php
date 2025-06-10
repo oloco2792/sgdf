@@ -4,12 +4,28 @@ require_once "../php/main.php";
 
 $pdo = conexion();
 
-$error = "";
+$user = limpiar_cadena($_GET['user']);
 
-if(isset($_GET['error'])){
-$error = $_GET['error'];
+if ($user == "") {
+    echo "<div class='mensaje_error'>
+    <p class='mensaje_error__p'>Uno de los campos obligatorios no ha sido llenado</p>
+    </div>";
+    exit();
 }
 
+$stmt = $pdo->prepare("SELECT preguntas1_id, preguntas2_id FROM usuarios WHERE user = :user");
+$stmt->execute([':user' => $user]);
+$resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$stmt = $pdo->prepare("SELECT pregunta FROM preguntas1 WHERE id = :id");
+$stmt->execute([':id' => $resultado['preguntas1_id']]);
+$pregunta1 = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$stmt = $pdo->prepare("SELECT pregunta FROM preguntas2 WHERE id = :id");
+$stmt->execute([':id' => $resultado['preguntas2_id']]);
+$pregunta2 = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$pdo = null;
 ?>
 
 <!DOCTYPE html>
@@ -39,19 +55,17 @@ $error = $_GET['error'];
     <main class="contenedor caja pass_rec">
         <div class="recuperar_contraseña">
             <img class="recuperar_contraseña_img" src="../img/favicon.ico">
-            <h1>Recuperar Contraseña</h1>
+            <h1>Verificar Preguntas de Seguridad de <?=$_GET['user']?></h1>
         </div>
-            <div class="form-rest">
-                <?php
-                if($error = "true"){
-                    echo "<div class='mensaje_error'>
-                    <p class='mensaje_error__p'>El Usuario no esta registrado</p>
-                    </div>"; }
-                ?>
-            </div>
-            <form class="registro confirmacion" method="POST" action="../php/recuperar_contraseña.php" autocomplete="off">
-                <label class="" for="user">Usuario</label>
-                <input class="" type="text" name="user" maxlength="20" required>
+            <div class="form-rest"></div>
+            <form class="registro confirmacion" method="POST" action="../php/verificar_preguntas.php" autocomplete="off">
+                <input class="" type="hidden" name="user" value="<?=$user?>" maxlength="20" required>
+
+                <label class="" for="user">Pregunta N°1: <?=$pregunta1['pregunta']?></label>
+                <input class="" type="text" name="pregunta1" maxlength="20" required>
+
+                <label class="" for="user">Pregunta N°2: <?=$pregunta2['pregunta']?></label>
+                <input class="" type="text" name="pregunta2" maxlength="20" required>
                 
             <div class="botones">
                 <button class="boton" value="Regresar"><a class="text-deco-none" href="../index.php?vistas=login">Regresar</a></button>

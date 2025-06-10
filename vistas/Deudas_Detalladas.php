@@ -17,6 +17,8 @@ $nombre_completo = $persona ? $persona['nombre'] .' '. $persona['apellido'].' (V
 
 echo "<h1>Deudas de " . htmlspecialchars($nombre_completo) . "</h1>";
 
+
+
 ob_start();
 
 echo "<table id='miTabla' class='registros__tabla'>";
@@ -28,6 +30,7 @@ echo "<thead>
             <th class='registros__th'>Fecha</th>
             <th class='registros__th'>Descripcion</th>
             <th class='registros__th'>Acciones</th>
+            
         </tr>
         </thead>";
 echo "<tbody>";
@@ -37,8 +40,10 @@ while ($deuda = $stmt->fetch(PDO::FETCH_ASSOC)) {
     echo "<td class='registros__td'>" . htmlspecialchars($deuda['id']) . "</td>";
     echo "<td class='registros__td'>" . htmlspecialchars($deuda['monto']) . "</td>";
     echo "<td class='registros__td'>" . htmlspecialchars($deuda['estado']) . "</td>";
-    echo "<td class='registros__td'>" . htmlspecialchars($deuda['fecha']) . "</td>";
+    $fecha_formateada = date('d-m-Y', strtotime($deuda['fecha']));
+    echo "<td class='registros__td'>" . htmlspecialchars($fecha_formateada) . "</td>";
     echo "<td class='registros__td'>" . htmlspecialchars($deuda['descripcion']) . "</td>";
+
     
     if ($deuda['estado'] == 'No Pagada') {
         echo "<td class='registros__td registros__botones'>

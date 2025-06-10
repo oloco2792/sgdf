@@ -1,3 +1,13 @@
+<?php
+
+require_once "../php/main.php";
+
+$pdo = conexion();
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,21 +26,21 @@
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="preconnect" href="../css/styles.css" as="style">
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-    <!--?php include "./include/title.php" ?-->
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <title>Recuperar Contraseña</title>
 </head>
 <body style="display: flex; flex-direction: column; justify-content: space-between">
 
 <div class="rec_caja">
     <main class="contenedor caja pass_rec">
+        <div class="recuperar_contraseña">
+            <img class="recuperar_contraseña_img" src="../img/favicon.ico">
             <h1>Recuperar Contraseña</h1>
+        </div>
             <div class="form-rest"></div>
-            <form class="registro FormularioAjax" method="POST" action="../php/recuperar_contraseña.php" autocomplete="off">
-                <label class="" for="pregunta1">Pregunta N°1: Fecha de Registro Mercantil</label>
-                <input class="" type="date" name="pregunta1" maxlength="20" required>
-
-                <label class="" for="pregunta2">Pregunta N°2: Nombre del Abuelo Paterno</label>
-                <input class="" type="text" name="pregunta2" maxlength="20" required>
+            <form class="registro Confirmacion" method="POST" action="../php/recuperar_contraseña.php" autocomplete="off">
+                <label class="" for="user">Usuario</label>
+                <input class="" type="text" name="user" maxlength="20" required>
                 
             <div class="botones">
                 <button class="boton" value="Regresar"><a class="text-deco-none" href="../index.php?vistas=login">Regresar</a></button>
@@ -40,6 +50,8 @@
         </div>
     </main>
 </div>
-
+<script src="../js/ajax.js"></script>
+<script src="../js/boton.js"></script>
+<script src="../js/confirmacion.js"></script>
 </body>
 </html>

@@ -1,49 +1,49 @@
 <?php
-    require_once "main.php";
 
-    $pregunta1 = limpiar_cadena($_POST['pregunta1']);
-    $pregunta2 = limpiar_cadena($_POST['pregunta2']);
+require_once "../php/main.php";
 
-    if (verificar_datos("\d{4}-\d{2}-\d{2}", $pregunta1)) {
-        echo "<div class='mensaje_error'>
-            <p class='mensaje_error__p'>La pregunta N°1 no coincide con el formato solicitado</p>
-        </div>";
-        exit();
-    }
+//Limpiando Datos y Almacenando
+$user = limpiar_cadena($_POST['user']);
 
-    if (verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}", $pregunta2)) {
-        echo "<div class='mensaje_error'>
-            <p class='mensaje_error__p'>La pregunta N°2 no coincide con el formato solicitado</p>
-        </div>";
-        exit();
-    }
+//Verificar Datos
+if($user == ""){
+    echo "<div class='mensaje_error'>
+        <p class='mensaje_error__p'>Uno de los campos obligatorios no ha sido llenados</p>
+    </div>";
+    exit();
+}
 
-    $check_pregunta1 = conexion();
-    $check_pregunta1 = $check_pregunta1 -> query("SELECT pregunta_1 FROM preguntas WHERE pregunta_1 = '$pregunta1'");
+//Verificando Integridad de los Datos
+if(verificar_datos("[a-zA-Z0-9]{3,40}", $user)){
+    echo "<div class='mensaje_error'>
+        <p class='mensaje_error__p'>El usuario no coincide con el formato solicitado.</p>
+    </div>";
+    exit();
+}
 
-    $check_pregunta2 = conexion();
-    $check_pregunta2 = $check_pregunta2 -> query("SELECT pregunta_2 FROM preguntas WHERE pregunta_2 = '$pregunta2'");
+$pdo = conexion();
+$check_user = $pdo -> query("SELECT * FROM usuarios WHERE user = '$user'");
 
-    if($check_pregunta1 -> rowCount() == 1 && $check_pregunta2 -> rowCount() == 1){
-    $check_pregunta1 = $check_pregunta1->fetch();
-    $check_pregunta2 = $check_pregunta2->fetch();
+if($check_user->rowCount()==1){
 
-    if($check_pregunta1['pregunta_1'] == $pregunta1 && $check_pregunta2['pregunta_2'] == $pregunta2){
+    $check_user=$check_user->fetch();
+
+    if($check_user['user']==$user){
 
         if(headers_sent()){
-            echo "<script window.location.href='../vistas/cambiar_contraseña.php';></script>";
+            echo "<script> window.location.href='../vistas/Verificar_Preguntas.php?user=".$user."'; </script>";
         }else{
-            header("Location: ../vistas/cambiar_contraseña.php");
-    }}
-    }else{ 
-        echo "<div class='mensaje_error'>
-        <p class='mensaje_error__p'>Una de las respuestas introducidas no son correctas</p>
+            header("Location: ../vistas/Verificar_Preguntas.php?user=".$user."");
+        }
+
+    }else{
+            echo "<div class='mensaje_error'>
+            <p class='mensaje_error__p'>El Usuario no esta registrado</p>
         </div>";
-    };
-
-
-    $check_pregunta1 = null;
-    $check_pregunta2 = null;
-
-    $pdo = null;
-?>
+        exit();
+    }
+}else{
+    header("Location: ../vistas/Cambiar_Contraseña.php?error=true");
+    exit();
+}
+$pdo=null;

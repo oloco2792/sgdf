@@ -10,7 +10,7 @@
     if(!isset($_GET["vistas"]) || $_GET["vistas"]==""){
         $_GET["vistas"] = "login";
     }
-    if(is_file("./vistas/".$_GET["vistas"].".php") && $_GET["vistas"]!="login" && $_GET["vistas"]!="404"){
+    if(is_file("./vistas/".$_GET["vistas"].".php") && $_GET["vistas"]!="Login" && $_GET["vistas"]!="404"){
                 
         //Cerrar Sesion
         if(!isset($_SESSION['user'])){
@@ -36,6 +36,7 @@
         include "./include/navbar.php";
 
         echo '<div class="posicion-relativa centrar-vertical">';
+        
         if($_GET['vistas'] !== "Inicio"){
             echo '<main class="contenedor caja">';
         }else{
@@ -52,8 +53,8 @@
         include "./include/footer.php";
 
     }else{
-        if($_GET["vistas"]=="login"){
-            include "./vistas/login.php";
+        if($_GET["vistas"]=="Login"){
+            include "./vistas/Login.php";
         }else{
             include "./vistas/404.php";
         }
