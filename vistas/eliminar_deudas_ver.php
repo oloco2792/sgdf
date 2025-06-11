@@ -37,7 +37,8 @@ while ($deuda = $stmt->fetch(PDO::FETCH_ASSOC)) {
     echo "<td class='registros__td'>" . htmlspecialchars($deuda['id']) . "</td>";
     echo "<td class='registros__td'>" . htmlspecialchars($deuda['monto']) . "</td>";
     echo "<td class='registros__td'>" . htmlspecialchars($deuda['estado']) . "</td>";
-    echo "<td class='registros__td'>" . htmlspecialchars($deuda['fecha']) . "</td>";
+    $fecha_formateada = date('d-m-Y', strtotime($deuda['fecha']));
+    echo "<td class='registros__td'>" . htmlspecialchars($fecha_formateada) . "</td>";
     echo "<td class='registros__td'>" . htmlspecialchars($deuda['descripcion']) . "</td>";
     
     if ($deuda['estado'] == 'No Pagada') {

@@ -36,11 +36,20 @@
         <button class="dropbtn navegacion__opcion">Administrador</button>
         <div class="dropdown-content">
             <a href="index.php?vistas=Registrar_Usuario">Registrar Usuario</a>
-            <!--a href="index.php?vistas=Ver_Usuarios">Ver Usuarios</a-->
+            <a href="index.php?vistas=Modificar_Perfil">Modificar Perfil</a>
+            <a href="index.php?vistas=Ver_Usuarios">Ver Usuarios</a>
             '.'<a class="navegacion__opcion--puntero">
             <form class="navegacion__opcion--puntero confirmacion redireccion" method="POST" action="./php/respaldar_db.php">
             <input class="navegacion__opcion--puntero navegacion__form" type="submit" value="Respaldar DB" value="_blank">
             </form></a>
+        </div>
+        </div>';
+    }else{
+        echo'
+        <div class="dropdown">
+        <button class="dropbtn navegacion__opcion">Usuario</button>
+        <div class="dropdown-content">
+            <a href="index.php?vistas=Modificar_Perfil">Modificar Perfil</a>
         </div>
         </div>';
     }

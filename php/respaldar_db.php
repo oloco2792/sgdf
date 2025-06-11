@@ -3,7 +3,7 @@ require_once "main.php";
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASSWORD', 'root1234');
+define('DB_PASSWORD', '');
 define('DB_NAME', 'sgdf');
 
 $backup_dir = '../backups/';
@@ -18,7 +18,7 @@ $filepath = $backup_dir . $filename;
 // ¡Importante! Necesitas la ruta completa a mysqldump.
 // En Linux/macOS, suele ser /usr/bin/mysqldump o /usr/local/bin/mysqldump
 // En Windows, es la ruta dentro de tu instalación de MySQL (ej: C:\xampp\mysql\bin\mysqldump.exe)
-$mysqldump_path = 'C:\wamp64\bin\mysql\mysql8.3.0\bin\mysqldump.exe'; // O la ruta correcta para tu servidor
+$mysqldump_path = 'C:\xampp\mysql\bin\mysqldump.exe'; // O la ruta correcta para tu servidor
 
 if (!file_exists($mysqldump_path)) {
     die("Error: mysqldump no encontrado en la ruta especificada: " . htmlspecialchars($mysqldump_path) . ". Por favor, verifica la ruta.");
@@ -26,7 +26,7 @@ if (!file_exists($mysqldump_path)) {
 
 // --- Comando para ejecutar mysqldump ---
 $command = "$mysqldump_path -u " . escapeshellarg("root") .
-           " -p" . escapeshellarg("root1234") .
+           " -p" . escapeshellarg("") .
            " -h " . escapeshellarg("localhost") .
            " " . escapeshellarg("sgdf") .
            " > " . escapeshellarg($filepath);

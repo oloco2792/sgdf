@@ -26,7 +26,7 @@ if($pregunta_1 === $respuesta_1 && $pregunta_2 === $respuesta_2){
         if(headers_sent()){
             echo "<script> window.location.href='../vistas/Nueva_Contraseña.php?user=".$user."'; </script>";
         }else{
-            header("Location: ../vistas/Nueva_Contraseña?user=".$user."");
+            header("Location: ../vistas/Nueva_Contraseña.php?user=".$user."");
         }
     }else{
         echo "<div class='mensaje_error'>

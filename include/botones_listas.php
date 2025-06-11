@@ -43,5 +43,9 @@ if($vistas=="Ver_Deudas" || $vistas=="Modificar_Deudas_Registros" || $vistas=="D
     echo '<button class="boton" id="boton" type="button">Registrar Persona</button>';
 }else if($vistas=="Ver_Proveedores"){
     echo '<button class="boton" id="boton" type="button">Registrar Proveedor</button>';
+}else if($vistas=="Ver_Usuarios"){
+    echo '<div class="boton-derecha-100">';
+    echo '<button class="boton" id="boton" type="button">Crear Usuario</button>';
+    echo '</div>';
 }
 echo '</div>';

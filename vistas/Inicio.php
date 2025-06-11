@@ -4,7 +4,7 @@ echo "<h1>Bienvenido, ".$_SESSION['user']."!</h1>";
 if (isset($_GET['mensaje'])) {
     switch ($_GET['mensaje']){
 		case "eliminar_deuda_exito":
-			echo "<div class='eliminar_deuda_exito'>
+			echo "<div class='mensaje_exito'>
         		<p class='mensaje_exito__p'>La deuda se ha eliminado correctamente.</p>
     		</div>";
 		break;

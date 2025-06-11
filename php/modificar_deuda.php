@@ -29,6 +29,20 @@ require_once "main.php";
     ':id' => $deuda_id
     ]);
 
+    $montoNew = $pdo->prepare("SELECT monto FROM deudas WHERE id = :deuda_id");
+    $montoNew->execute([
+        ":deuda_id" => $deuda_id
+    ]);
+
+    $resultado = $montoNew->fetch(PDO::FETCH_ASSOC);
+
+    if ($resultado['monto'] == 0) {
+    $stmt = $pdo->prepare("UPDATE deudas SET estado = 'Pagada' WHERE id = :deuda_id");
+    $stmt->execute([
+        ":deuda_id" => $deuda_id
+    ]);
+    }
+
     echo "<div class='mensaje_exito'>
         <p class='mensaje_exito__p'>El Registro se ha modificado correctamente.</p>
     </div>";

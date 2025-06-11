@@ -14,7 +14,7 @@ $persona_id = $_POST['persona_id'];
     $deudaOld = $stmtNombre->fetch(PDO::FETCH_ASSOC);
     $deudaTitulo = $deudaOld['monto'];
 ?>
-    <h1>Modificar deuda de <?php echo $nombre_completo ?> de <?php echo $deudaTitulo?></h1>
+    <h1>Modificar deuda de <?=$nombre_completo?> de <?=$deudaTitulo?>Bs. (ID: <?=$deuda_id?>)</h1>
     <div class="form-rest"></div>
     <form class="registro FormularioAjax" method="POST" action="./php/modificar_deuda.php" autocomplete="off">
 

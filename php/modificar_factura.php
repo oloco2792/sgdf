@@ -29,6 +29,20 @@ require_once "main.php";
     ':id' => $factura_id
     ]);
 
+    $montoNew = $pdo->prepare("SELECT monto FROM facturas WHERE id = :factura_id");
+    $montoNew->execute([
+        ":factura_id" => $factura_id
+    ]);
+
+    $resultado = $montoNew->fetch(PDO::FETCH_ASSOC);
+
+    if ($resultado['monto'] == 0) {
+    $stmt = $pdo->prepare("UPDATE facturas SET estado = 'Pagada' WHERE id = :factura_id");
+    $stmt->execute([
+        ":factura_id" => $factura_id
+    ]);
+    }
+
     echo "<div class='mensaje_exito'>
         <p class='mensaje_exito__p'>El Registro se ha modificado correctamente.</p>
     </div>";

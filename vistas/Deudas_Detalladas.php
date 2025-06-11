@@ -17,8 +17,6 @@ $nombre_completo = $persona ? $persona['nombre'] .' '. $persona['apellido'].' (V
 
 echo "<h1>Deudas de " . htmlspecialchars($nombre_completo) . "</h1>";
 
-
-
 ob_start();
 
 echo "<table id='miTabla' class='registros__tabla'>";

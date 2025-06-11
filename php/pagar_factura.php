@@ -9,9 +9,19 @@ require_once "main.php";
     $descripcion_pago = limpiar_cadena($_POST['descripcion_pago']);
 
     if (verificar_datos("[0-9]{1,40}", $monto)) {
-        echo "El Monto no coincide con el formato solicitado";
+        echo "<div class='mensaje_error'>
+            <p class='mensaje_error__p'>El monto no coincide con el formato solicitado.</p>
+        </div>";
         exit();
     }
+
+    if ($monto == 0) {
+        echo "<div class='mensaje_error'>
+            <p class='mensaje_error__p'>El monto no puede ser igual a 0.</p>
+        </div>";
+        exit();
+    }
+
 
     $montoMayor = $pdo->prepare("SELECT monto FROM facturas WHERE id = :factura_id");
     $montoMayor->execute([

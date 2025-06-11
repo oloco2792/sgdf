@@ -14,7 +14,7 @@ $proveedor_id = $_POST['proveedor_id'];
     $facturaOld = $stmtNombre->fetch(PDO::FETCH_ASSOC);
     $facturaTitulo = $facturaOld['monto'];
 ?>
-<h1>Modificar factura de <?php echo $nombre_completo ?> de <?php echo $facturaTitulo?>Bs.</h1>
+<h1>Modificar factura de <?=$nombre_completo?> de <?=$facturaTitulo?>Bs. (ID: <?=$factura_id?>)</h1>
 <div class="form-rest"></div>
 <form class="registro FormularioAjax" method="POST" action="./php/modificar_factura.php" autocomplete="off">
 

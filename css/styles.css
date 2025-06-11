@@ -134,6 +134,12 @@ h4{
 	width: 95%;
 }
 
+.boton-derecha-100{
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+}
+
 .botones{
 	display: flex;
 	justify-content: space-between;
@@ -313,7 +319,7 @@ h4{
 }
 
 .izquierda{
-	height: 200vh;
+	height: 100vh;
 	width: 60%;
     background-image: url(../img/bg.jpg);
 	background-repeat: round;

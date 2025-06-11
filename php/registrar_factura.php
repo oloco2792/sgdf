@@ -55,6 +55,13 @@ if ($resultado) {
         </div>";
         exit();
     }
+
+    if ($resultado['rif'] !== $rif) {
+        echo "<div class='mensaje_error'>
+                <p class='mensaje_error__p'>El nombre/Razon Social ya se encuentra registrado.</p>
+        </div>";
+        exit();
+    }
     $id_proveedor = null; 
 
     $stmt = $pdo->prepare("SELECT id FROM proveedores WHERE rif = :rif");

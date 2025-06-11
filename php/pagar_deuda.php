@@ -9,7 +9,16 @@ require_once "main.php";
     $descripcion_pago = limpiar_cadena($_POST['descripcion_pago']);
 
     if (verificar_datos("[0-9]{1,40}", $monto)) {
-        echo "El Monto no coincide con el formato solicitado";
+        echo "<div class='mensaje_error'>
+            <p class='mensaje_error__p'>El monto no coincide con el formato solicitado.</p>
+        </div>";
+        exit();
+    }
+
+    if ($monto == 0) {
+        echo "<div class='mensaje_error'>
+            <p class='mensaje_error__p'>El monto no puede ser igual a 0.</p>
+        </div>";
         exit();
     }
 
@@ -41,7 +50,7 @@ require_once "main.php";
     ':descripcion_pago' => $descripcion_pago
     ]);
 
-    $montoNew = $pdo->prepare("SELECT monto FROM facturas WHERE id = :deuda_id");
+    $montoNew = $pdo->prepare("SELECT monto FROM deudas WHERE id = :deuda_id");
     $montoNew->execute([
         ":deuda_id" => $deuda_id
     ]);
@@ -49,7 +58,7 @@ require_once "main.php";
     $resultado = $montoNew->fetch(PDO::FETCH_ASSOC);
 
     if ($resultado['monto'] == 0) {
-    $stmt = $pdo->prepare("UPDATE facturas SET estado = 'Pagada' WHERE id = :deuda_id");
+    $stmt = $pdo->prepare("UPDATE deudas SET estado = 'Pagada' WHERE id = :deuda_id");
     $stmt->execute([
         ":deuda_id" => $deuda_id
     ]);
