@@ -1,4 +1,4 @@
-<h1>Ver Facturas</h1>
+<h1>Facturas</h1>
 <?php
 require_once "./php/main.php";
 

@@ -1,4 +1,4 @@
-<h1>Ver Deudas</h1>
+<h1>Clientes</h1>
 <?php
 require_once "./php/main.php";
 

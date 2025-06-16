@@ -84,7 +84,7 @@ if ($resultado) {
 
 $fecha_formateada = date('Y-m-d', strtotime($fecha));
 
-$stmt_factura = $pdo->prepare("INSERT INTO facturas (proveedor_id, monto, fecha, estado, descripcion, fecha_actualizacion, descripcion_pago) VALUES (:proveedor_id, :monto, :fecha, :estado, :descripcion, '', '')");
+$stmt_factura = $pdo->prepare("INSERT INTO facturas (proveedor_id, monto, fecha, estado, descripcion, monto_actual, fecha_actualizacion, descripcion_pago) VALUES (:proveedor_id, :monto, :fecha, :estado, :descripcion, :monto,:fecha, '')");
 $stmt_factura->execute([
     ':proveedor_id' => $id_proveedor,
     ':monto' => $monto,

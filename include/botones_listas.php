@@ -35,9 +35,15 @@ echo '<form method="POST" action="./php/generar_pdf_proveedores.php">
     </form>';
 }
 
-if($vistas=="Ver_Deudas" || $vistas=="Modificar_Deudas_Registros" || $vistas=="Deudas_Detalladas" || $vistas=="Modificar_Deudas_Ver"){
+if($vistas=="Ver_Deudas"){
     echo '<button class="boton" id="boton" type="button">Crear Deuda</button>';
-}else if($vistas=="Ver_Facturas" || $vistas=="Modificar_Facturas_Registros" || $vistas=="Facturas_Detalladas" ||  $vistas=="Modificar_Facturas_Ver"){
+}else if($vistas=="Deudas_Detalladas"){
+echo '<form method="POST" action="index.php?vistas=Nueva_Deuda">
+        <input type="hidden" name="persona_id" value="' . $persona_id . '">
+        <button class="boton" type="submit">Crear Deuda</button>
+    </form>';
+}
+else if($vistas=="Ver_Facturas" || $vistas=="Modificar_Facturas_Registros" || $vistas=="Facturas_Detalladas" ||  $vistas=="Modificar_Facturas_Ver"){
     echo '<button class="boton" id="boton" type="button">Crear Factura</button>';
 }else if($vistas=="Ver_Personas"){
     echo '<button class="boton" id="boton" type="button">Registrar Persona</button>';

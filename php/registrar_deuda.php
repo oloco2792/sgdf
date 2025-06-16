@@ -84,7 +84,7 @@ if ($resultado) {
 
 $fecha_formateada = date('Y-m-d', strtotime($fecha));
 
-$stmt_deuda = $pdo->prepare("INSERT INTO deudas (persona_id, monto, fecha, estado, descripcion, fecha_actualizacion) VALUES (:persona_id, :monto, :fecha, :estado, :descripcion, '')");
+$stmt_deuda = $pdo->prepare("INSERT INTO deudas (persona_id, monto, fecha, estado, descripcion, monto_actual, fecha_actualizacion) VALUES (:persona_id, :monto, :fecha, :estado, :descripcion, :monto, :fecha)");
 $stmt_deuda->execute([
     ':persona_id' => $id_deudor,
     ':monto' => $monto,

@@ -1,4 +1,4 @@
-<h1>Ver Deudas</h1>
+<h1>Deudas</h1>
 <?php
 require_once "./php/main.php";
 
@@ -20,13 +20,13 @@ echo "<table id='miTabla'class='registros__tabla'>";
 echo "<thead>";
 echo "<tr>";
 
-$columns = $stmt->fetch(PDO::FETCH_ASSOC);
-if ($columns) {
-    foreach ($columns as $columnName => $value) {
-        echo "<th class='registros__th'>" . htmlspecialchars($columnName) . "</th>";
-    }
+    echo "<th class='registros__th'>ID</th>";
+    echo "<th class='registros__th'>Nombre</th>";
+    echo "<th class='registros__th'>Apellido</th>";
+    echo "<th class='registros__th'>Cedula</th>";
+    echo "<th class='registros__th'>Monto Total</th>";
     echo "<th class='registros__th'>Acciones</th>";
-}
+
 echo "</tr>";
 echo "</thead>";
 

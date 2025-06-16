@@ -20,7 +20,7 @@ if (isset($_GET['mensaje'])) {
 		break;
 		case "eliminar_proveedor_exito":
 			echo "<div class='mensaje_exito'>
-        		<p class='mensaje_exito__p'>El proveedor registrada se ha eliminado correctamente.</p>
+        		<p class='mensaje_exito__p'>El proveedor registrado se ha eliminado correctamente.</p>
     		</div>";
 		break;
 		case "respaldar_db_exito":
@@ -43,8 +43,8 @@ if (isset($_GET['mensaje'])) {
 ?>
 
 <div class="home">
-	<button class="home__boton"><a class="home__enlace" href="index.php?vistas=Ver_Facturas">Visualizar Facturas</a></button>
-	<button class="home__boton"><a class="home__enlace" href="index.php?vistas=Ver_Deudas">Visualizar Deudas</a></button>
-	<button class="home__boton"><a class="home__enlace" href="index.php?vistas=Nueva_Factura">Registrar Facturas</a></button>
-	<button class="home__boton"><a class="home__enlace" href="index.php?vistas=Nueva_Deuda">Nueva Deudas</a></button>
+	<button class="home__boton"><a class="home__enlace" href="index.php?vistas=Ver_Facturas">Ver Facturas</a></button>
+	<button class="home__boton"><a class="home__enlace" href="index.php?vistas=Ver_Deudas">Ver Deudas</a></button>
+	<button class="home__boton"><a class="home__enlace" href="index.php?vistas=Nueva_Factura">Nueva Factura</a></button>
+	<button class="home__boton"><a class="home__enlace" href="index.php?vistas=Nueva_Deuda">Nueva Deuda</a></button>
 </div>

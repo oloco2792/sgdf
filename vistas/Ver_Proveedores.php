@@ -1,4 +1,4 @@
-<h1>Ver Proveedores</h1>
+<h1>Proveedores</h1>
 <?php
 require_once "./php/main.php";
 

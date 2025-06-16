@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="dropdown">
-        <button class="dropbtn navegacion__opcion">Personas</button>
+        <button class="dropbtn navegacion__opcion">Clientes</button>
         <div class="dropdown-content">
             <a href="index.php?vistas=Nueva_Persona">Registrar</a>
             <a href="index.php?vistas=Ver_Personas">Ver</a>

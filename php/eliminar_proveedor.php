@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $proveedor_id = limpiar_cadena($_POST['proveedor_id']);
 
     try {
-    $stmt = $pdo->prepare("DELETE FROM facturas WHERE persona_id = :id");
+    $stmt = $pdo->prepare("DELETE FROM facturas WHERE proveedor_id = :id");
     $stmt->execute([
     ':id' => $proveedor_id]);
 

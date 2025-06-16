@@ -4,7 +4,7 @@ const vistas = params.get('vistas');
 
 boton.addEventListener('click', function() {
 
-if(vistas=="Ver_Deudas" || vistas=="Modificar_Deudas_Ver" || vistas=="Eliminar_Deudas_Ver" || vistas=="Deudas_Detalladas"){
+if(vistas=="Ver_Deudas"){
         window.location.href='index.php?vistas=Nueva_Deuda';
 }else if(vistas=="Ver_Facturas" || vistas=="Modificar_Facturas_Ver" || vistas=="Eliminar_Facturas_Ver" || vistas=="Facturas_Detalladas"){
         window.location.href='index.php?vistas=Nueva_Factura';

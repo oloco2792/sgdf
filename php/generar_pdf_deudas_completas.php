@@ -45,7 +45,7 @@ if (isset($_POST['html_content'])) {
     <body>
         <h1>SUMINISTRO DE ALIMENTOS DON GREGO C.A</h1>
         <h2>J-409523802</h2>
-        <h2>Reporte de Personas y Deudas</h2>
+        <h2>Reporte Completo de Deudas</h2>
         ' . $html_recibido . '
     </body>
     </html>';
@@ -63,7 +63,7 @@ if (isset($_POST['html_content'])) {
     echo "<div class='mensaje_error'>
         <p class='mensaje_error__p'>No se recibió el contenido de la tabla para generar el PDF</p>
     </div>";
-    // header('Location: ../index.php?vistas=Inicio'); // Redirigir a la página principal
+    header('Location: ../index.php?vistas=Inicio'); // Redirigir a la página principal
     exit;
 }
 
