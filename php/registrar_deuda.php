@@ -29,12 +29,13 @@ if (verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}", $apellido)) {
     </div>";
     exit();
 }
-if (verificar_datos("[0-9]{3,20}", $cedula)) {
+if (verificar_datos("[0-9]{6,8}", $cedula)) {
     echo "<div class='mensaje_error'>
     <p class='mensaje_error__p'>La cedula no coincide con el formato solicitado</p>
     </div>";
     exit();
 }
+
 if (verificar_datos("[0-9]{1,40}", $monto)) {
     echo "<div class='mensaje_error'>
     <p class='mensaje_error__p'>El Monto no coincide con el formato solicitado</p>
@@ -84,7 +85,7 @@ if ($resultado) {
 
 $fecha_formateada = date('Y-m-d', strtotime($fecha));
 
-$stmt_deuda = $pdo->prepare("INSERT INTO deudas (persona_id, monto, fecha, estado, descripcion, monto_actual, fecha_actualizacion) VALUES (:persona_id, :monto, :fecha, :estado, :descripcion, :monto, :fecha)");
+$stmt_deuda = $pdo->prepare("INSERT INTO deudas (persona_id, monto_inicial, fecha, estado, descripcion, monto_actual, fecha_actualizacion) VALUES (:persona_id, :monto, :fecha, :estado, :descripcion, :monto, :fecha)");
 $stmt_deuda->execute([
     ':persona_id' => $id_deudor,
     ':monto' => $monto,

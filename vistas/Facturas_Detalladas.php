@@ -34,7 +34,7 @@ echo "<tbody>";
 while ($deuda = $stmt->fetch(PDO::FETCH_ASSOC)) {
     echo "<tr>";
     echo "<td class='registros__td'>" . htmlspecialchars($deuda['id']) . "</td>";
-    echo "<td class='registros__td'>" . htmlspecialchars($deuda['monto']) . "</td>";
+    echo "<td class='registros__td'>" . htmlspecialchars($deuda['monto_inicial']) . "</td>";
     echo "<td class='registros__td'>" . htmlspecialchars($deuda['estado']) . "</td>";
     $fecha_formateada = date('d-m-Y', strtotime($deuda['fecha']));
     echo "<td class='registros__td'>" . htmlspecialchars($fecha_formateada) . "</td>";

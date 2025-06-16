@@ -6,7 +6,7 @@ $pdo = conexion();
 $persona_id = $_POST['persona_id'];
 $deuda = $_POST['deuda_id'];
 
-$sql = "SELECT monto FROM deudas WHERE id = :deuda_id AND persona_id = :persona_id";
+$sql = "SELECT monto_actual FROM deudas WHERE id = :deuda_id AND persona_id = :persona_id";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
 ':deuda_id' => $deuda,
@@ -18,7 +18,7 @@ $monto = $stmt->fetch(PDO::FETCH_ASSOC);
 $stmtNombre = $pdo->prepare("SELECT nombre, apellido, cedula FROM personas WHERE id = :persona_id");
 $stmtNombre->execute([':persona_id' => $persona_id]);
 $persona = $stmtNombre->fetch(PDO::FETCH_ASSOC);
-$nombre_completo = $persona ? $persona['nombre'] .' '. $persona['apellido'].' (V-'. $persona['cedula'].') de '. $monto['monto'] .'Bs. (ID: '.$deuda.')': 'Desconocido';
+$nombre_completo = $persona ? $persona['nombre'] .' '. $persona['apellido'].' (V-'. $persona['cedula'].') de '. $monto['monto_actual'] .'Bs. (ID: '.$deuda.')': 'Desconocido';
 
 ?>
 

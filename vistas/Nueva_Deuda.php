@@ -18,23 +18,23 @@
 
         if ($resultado) {
         echo '<label class="datosNombres input_disabled" for="nombre">Nombre</label>
-        <input class="activarInput input_disabled" type="text" name="nombre" pattern="[a-zA-Z]{4, 20}" maxlength="20" value="'.$resultado['nombre'].'" required readonly>
+        <input class="activarInput input_disabled" type="text" name="nombre" pattern="[a-zA-Z]{3, 40}" maxlength="20" value="'.$resultado['nombre'].'" required>
     
         <label class="datosNombres input_disabled" for="apellido">Apellido</label>
-        <input class="activarInput input_disabled" type="text" name="apellido" pattern="[a-zA-Z]{4, 20}" maxlength="20" value="'.$resultado['apellido'].'" required readonly>
+        <input class="activarInput input_disabled" type="text" name="apellido" pattern="[a-zA-Z]{3, 40}" maxlength="20" value="'.$resultado['apellido'].'" required>
 
         <label class="input_disabled" for="cedula">Cedula (V-)</label>
-        <input class="input_disabled" type="number" name="cedula" pattern="[0-9]{1, 20}" maxlength="20" value="'.$resultado['cedula'].'" required readonly>';
+        <input class="input_disabled" type="number" name="cedula" pattern="[0-9]{6, 8}" maxlength="20" value="'.$resultado['cedula'].'" required>';
             }
     }else{
     echo '<label class="datosNombres" for="nombre">Nombre</label>
-        <input class="activarInput" type="text" name="nombre" pattern="[a-zA-Z]{4, 20}" maxlength="20" required>
+        <input class="activarInput" type="text" name="nombre" pattern="[a-zA-Z]{3, 40}" maxlength="20" required>
     
         <label class="datosNombres" for="apellido">Apellido</label>
-        <input class="activarInput" type="text" name="apellido" pattern="[a-zA-Z]{4, 20}" maxlength="20" required>
+        <input class="activarInput" type="text" name="apellido" pattern="[a-zA-Z]{4, 40}" maxlength="20" required>
 
         <label class="" for="cedula">Cedula (V-)</label>
-        <input class="" type="number" name="cedula" pattern="[0-9]{1, 20}" maxlength="20" required>';
+        <input class="" type="number" name="cedula" pattern="[0-9]{6, 8}" maxlength="20" required>';
     }
 
     ?>

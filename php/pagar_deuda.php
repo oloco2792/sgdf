@@ -22,14 +22,14 @@ require_once "main.php";
         exit();
     }
 
-    $montoMayor = $pdo->prepare("SELECT monto FROM deudas WHERE id = :deuda_id");
+    $montoMayor = $pdo->prepare("SELECT monto_actual FROM deudas WHERE id = :deuda_id");
     $montoMayor->execute([
         ":deuda_id" => $deuda_id
     ]);
 
     $verificarMontoMayor = $montoMayor->fetch(PDO::FETCH_ASSOC);
 
-    if($monto > $verificarMontoMayor['monto']){
+    if($monto > $verificarMontoMayor['monto_actual']){
     echo "<div class='mensaje_error'>
         <p class='mensaje_error__p'>El monto introducido no puede ser mayor al registrado.</p>
     </div>";
@@ -39,7 +39,7 @@ require_once "main.php";
     $fecha_formateada = date('Y-m-d', strtotime($fecha_actualizacion));
 
     $stmt = $pdo->prepare("UPDATE deudas SET
-    monto = GREATEST(0, monto - :monto),
+    monto_actual = GREATEST(0, monto_actual - :monto),
     fecha_actualizacion = :fecha_actualizacion,
     descripcion_pago = :descripcion_pago
     WHERE id = :deuda_id");
@@ -50,14 +50,14 @@ require_once "main.php";
     ':descripcion_pago' => $descripcion_pago
     ]);
 
-    $montoNew = $pdo->prepare("SELECT monto FROM deudas WHERE id = :deuda_id");
+    $montoNew = $pdo->prepare("SELECT monto_actual FROM deudas WHERE id = :deuda_id");
     $montoNew->execute([
         ":deuda_id" => $deuda_id
     ]);
 
     $resultado = $montoNew->fetch(PDO::FETCH_ASSOC);
 
-    if ($resultado['monto'] == 0) {
+    if ($resultado['monto_actual'] == 0) {
     $stmt = $pdo->prepare("UPDATE deudas SET estado = 'Pagada' WHERE id = :deuda_id");
     $stmt->execute([
         ":deuda_id" => $deuda_id

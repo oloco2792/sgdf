@@ -23,9 +23,11 @@ echo "<table id='miTabla' class='registros__tabla'>";
 echo "<thead>
         <tr>
             <th class='registros__th'>ID Deuda</th>
-            <th class='registros__th'>Monto </th>
+            <th class='registros__th'>Monto Actual (Bs.)</th>
+            <th class='registros__th'>Monto Inicial (Bs.)</th>
+            <th class='registros__th'>Fecha de Registro</th>
+            <th class='registros__th'>Fecha de Abono</th>
             <th class='registros__th'>Estado</th>
-            <th class='registros__th'>Fecha</th>
             <th class='registros__th'>Descripcion</th>
             <th class='registros__th'>Acciones</th>
             
@@ -34,12 +36,15 @@ echo "<thead>
 echo "<tbody>";
 
 while ($deuda = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $fecha_formateada = date('d-m-Y', strtotime($deuda['fecha']));
+    $fecha_act_formateada = date('d-m-Y', strtotime($deuda['fecha_actualizacion']));
     echo "<tr>";
     echo "<td class='registros__td'>" . htmlspecialchars($deuda['id']) . "</td>";
-    echo "<td class='registros__td'>" . htmlspecialchars($deuda['monto']) . "</td>";
-    echo "<td class='registros__td'>" . htmlspecialchars($deuda['estado']) . "</td>";
-    $fecha_formateada = date('d-m-Y', strtotime($deuda['fecha']));
+    echo "<td class='registros__td'>" . htmlspecialchars($deuda['monto_actual']) . "</td>";
+    echo "<td class='registros__td'>" . htmlspecialchars($deuda['monto_inicial']) . "</td>";
     echo "<td class='registros__td'>" . htmlspecialchars($fecha_formateada) . "</td>";
+    echo "<td class='registros__td'>" . htmlspecialchars($fecha_act_formateada) . "</td>";
+    echo "<td class='registros__td'>" . htmlspecialchars($deuda['estado']) . "</td>";
     echo "<td class='registros__td'>" . htmlspecialchars($deuda['descripcion']) . "</td>";
 
     echo "<td class='registros__td registros__botones'>

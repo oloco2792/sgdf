@@ -6,7 +6,7 @@ $pdo = conexion();
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 // Consulta SQL con suma de las deudas vinculadas a cada persona, excluyendo las pagadas
-$sql = "SELECT p.*, IFNULL(SUM(d.monto), 0) AS deuda_total
+$sql = "SELECT p.*, IFNULL(SUM(d.monto_actual), 0) AS deuda_total
             FROM personas p
             LEFT JOIN deudas d ON p.id = d.persona_id AND d.estado != 'pagada'
             GROUP BY p.id";

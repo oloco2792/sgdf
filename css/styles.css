@@ -452,8 +452,16 @@ h4{
 
 .registros__botones {
 	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+@media(min-width: 768px){
+	.registros__botones {
+	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
+}
 }
 
 .registros__select {

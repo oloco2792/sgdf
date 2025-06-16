@@ -6,7 +6,7 @@ $pdo = conexion();
 $factura = $_POST['factura_id'];
 $proveedor_id = $_POST['proveedor_id'];
 
-$sql = "SELECT monto FROM facturas WHERE id = :factura_id AND proveedor_id = :proveedor_id";
+$sql = "SELECT monto_actual FROM facturas WHERE id = :factura_id AND proveedor_id = :proveedor_id";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
 ':factura_id' => $factura,
@@ -18,14 +18,14 @@ $monto = $stmt->fetch(PDO::FETCH_ASSOC);
 $stmtNombre = $pdo->prepare("SELECT razon_social, rif FROM proveedores WHERE id = :proveedor_id");
 $stmtNombre->execute([':proveedor_id' => $proveedor_id]);
 $persona = $stmtNombre->fetch(PDO::FETCH_ASSOC);
-$nombre_completo = $persona ? $persona['razon_social'].' (J-'. $persona['rif'].') de '. $monto['monto'] .'Bs. (ID: '.$factura.')': 'Desconocido';
+$nombre_completo = $persona ? $persona['razon_social'].' (J-'. $persona['rif'].') de '. $monto['monto_actual'] .'Bs. (ID: '.$factura.')': 'Desconocido';
 
 ?>
     <h1>Pagar Factura de <?=$nombre_completo?></h1>
     <div class="form-rest"></div>
     <form class="registro FormularioAjax" method="POST" action="./php/pagar_factura.php" autocomplete="off">
 
-        <?php echo "<input type='hidden' name='factura_id' value='".$factura. "'>";?>
+        <?="<input type='hidden' name='factura_id' value='".$factura. "'>";?>
 
         <label class="" for="monto">Monto a Pagar</label>
         <input class="" type="number" name="monto" pattern="[0-9]{1, 20}" maxlength="20" required>
@@ -36,7 +36,5 @@ $nombre_completo = $persona ? $persona['razon_social'].' (J-'. $persona['rif'].'
         <label class="" for="descripcion_pago">Descripcion</label>
         <textarea class="" name="descripcion_pago" maxlength="200"></textarea>
         
-    <div class="boton-derecha">
-        <input class="" type="submit" value="Ingresar">
-    </div>
+    <?php include_once "./include/botones_form.php" ?>
 </div>
