@@ -6,10 +6,9 @@ $apellido = limpiar_cadena($_POST['apellido']);
 $cedula = limpiar_cadena($_POST['cedula']);
 $monto = limpiar_cadena($_POST['monto']);
 $fecha = limpiar_cadena($_POST['fecha']);
-$estado = limpiar_cadena($_POST['estado']);
 $descripcion = limpiar_cadena($_POST['descripcion']);
 
-if ($nombre == "" || $apellido == "" || $monto == "" || $estado == "") {
+if ($nombre == "" || $apellido == "" || $monto == "") {
 echo "<div class='mensaje_error'>
 <p class='mensaje_error__p'>Uno de los campos obligatorios no ha sido llenado</p>
 </div>";
@@ -84,6 +83,7 @@ if ($resultado) {
 }
 
 $fecha_formateada = date('Y-m-d', strtotime($fecha));
+$estado = "No Pagada";
 
 $stmt_deuda = $pdo->prepare("INSERT INTO deudas (persona_id, monto_inicial, fecha, estado, descripcion, monto_actual, fecha_actualizacion) VALUES (:persona_id, :monto, :fecha, :estado, :descripcion, :monto, :fecha)");
 $stmt_deuda->execute([
@@ -97,6 +97,6 @@ $stmt_deuda->execute([
 echo "<div class='mensaje_exito'>
         <p class='mensaje_exito__p'>La deuda se ha registrado correctamente.</p>
       </div>";
-
+      
 $pdo = null;
 ?>

@@ -90,8 +90,12 @@ h4{
 
 .rec_caja{
 	margin: 20vh;
+
 }
 
+.pass_rec{
+	background-color: white;
+}
 
 .contenedor{
 	max-width: 120rem;
@@ -469,16 +473,16 @@ h4{
 }
 
 .registros__boton--ver {
-	background-color: #ADEBB3;
+	background-color: #9effa6;
 }
 .registros__boton--modificar {
 	background-color: #f39c12;
 }
 .registros__boton--eliminar {
-	background-color: #ff5454;
+	background-color: #ff6262;
 }
 .registros__boton--pagar {
-	background-color: var(--verdeBrillante);
+	background-color: #9effa6;
 }
 
 .filters {
@@ -505,7 +509,16 @@ h4{
 	width: 5rem;
 }
 
+.body_recuperar_contraseña{
+	/**background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/bg.jpg);
+	background-size: cover;**/
+}
+
 /**==LISTAS==**/
+
+.odd{
+	background-color: var(--grisClaro);
+}
 
 /**==FOOTER==**/
 

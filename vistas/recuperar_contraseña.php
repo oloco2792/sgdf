@@ -4,8 +4,6 @@ require_once "../php/main.php";
 
 $pdo = conexion();
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +27,7 @@ $pdo = conexion();
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
     <title>Recuperar Contraseña</title>
 </head>
-<body style="display: flex; flex-direction: column; justify-content: space-between">
+<body class="body_recuperar_contraseña" style="display: flex; flex-direction: column; justify-content: space-between">
 
 <div class="rec_caja">
     <main class="contenedor caja pass_rec">

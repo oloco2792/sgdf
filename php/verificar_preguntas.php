@@ -29,9 +29,7 @@ if($pregunta_1 === $respuesta_1 && $pregunta_2 === $respuesta_2){
             header("Location: ../vistas/Nueva_Contraseña.php?user=".$user."");
         }
     }else{
-        echo "<div class='mensaje_error'>
-            <p class='mensaje_error__p'>Las preguntas No coinciden</p>
-        </div>";
+header("Location: ../vistas/Verificar_Preguntas.php?user=".$user."&error_pregunta=true");
         exit();
     }
 $pdo=null;

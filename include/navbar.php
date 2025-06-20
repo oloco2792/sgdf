@@ -1,7 +1,11 @@
 <div class="contenedor--bg">
 <nav class="contenedor navegacion">
     <a class="navegacion__opcion" href="index.php?vistas=Inicio">Inicio</a>
-    <div class="dropdown">
+    <a class="navegacion__opcion" href="index.php?vistas=Ver_Deudas">Deudas</a>
+    <a class="navegacion__opcion" href="index.php?vistas=Ver_Facturas">Facturas</a>
+    <a class="navegacion__opcion" href="index.php?vistas=Ver_Personas">Clientes</a>
+    <a class="navegacion__opcion" href="index.php?vistas=Ver_Proveedores">Proveedores</a>
+    <!--div class="dropdown">
         <button class="dropbtn navegacion__opcion">Deudas</button>
         <div class="dropdown-content">
             <a href="index.php?vistas=Nueva_Deuda">Registrar</a>
@@ -28,9 +32,9 @@
             <a href="index.php?vistas=Nuevo_Proveedor">Registrar</a>
             <a href="index.php?vistas=Ver_Proveedores">Ver</a>
         </div>
-    </div>
+    </div-->
     <?php
-    if($_SESSION['user']=="admin"){
+    if($_SESSION['nivel']=="1"){
         echo'
         <div class="dropdown">
         <button class="dropbtn navegacion__opcion">Administrador</button>

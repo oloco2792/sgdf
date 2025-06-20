@@ -6,13 +6,13 @@ $persona_id = $_POST['persona_id'];
     $pdo = conexion();
     $stmtNombre = $pdo->prepare("SELECT * FROM personas WHERE id = :persona_id");
     $stmtNombre->execute([':persona_id' => $persona_id]);
-    $stmtDeuda = $pdo->prepare("SELECT * FROM deudas WHERE persona_id = :persona_id");
-    $stmtDeuda->execute([':persona_id' => $persona_id]);
+    $stmtDeuda = $pdo->prepare("SELECT * FROM deudas WHERE persona_id = :persona_id AND id = :id");
+    $stmtDeuda->execute([':persona_id' => $persona_id, ':id' => $deuda_id]);
 
     $persona = $stmtNombre->fetch(PDO::FETCH_ASSOC);
     $deuda = $stmtDeuda->fetch(PDO::FETCH_ASSOC);
 
-    $nombre_completo = $persona ? $persona['nombre'] .' '. $persona['apellido'] .' (V-'.$persona['cedula'].') de '.$deuda['monto_inicial'].'Bs. (ID: '. $deuda_id . ')': 'Desconocido';
+    $nombre_completo = $persona ? $persona['nombre'] .' '. $persona['apellido'] .' (V-'.$persona['cedula'].') de Bs.'.$deuda['monto_inicial'].' (ID: '. $deuda_id . ')': 'Desconocido';
 ?>
     <h1>Modificar deuda de <?=$nombre_completo?></h1>
     <div class="form-rest"></div>

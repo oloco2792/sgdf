@@ -49,13 +49,22 @@ $pdo = null;
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
     <title>Recuperar Contraseña</title>
 </head>
-<body style="display: flex; flex-direction: column; justify-content: space-between">
+<body class="body_recuperar_contraseña" style="display: flex; flex-direction: column; justify-content: space-between">
 
 <div class="rec_caja">
     <main class="contenedor caja pass_rec">
         <div class="recuperar_contraseña">
             <img class="recuperar_contraseña_img" src="../img/favicon.ico">
             <h1>Verificar Preguntas de Seguridad de <?=$_GET['user']?></h1>
+            <?php 
+                if(isset($_GET['error_pregunta'])){
+                if($_GET['error_pregunta']=="true"){
+            echo "<div class='mensaje_error'>
+                <p class='mensaje_error__p'>Las preguntas No coinciden</p>
+            </div>";
+                }
+                }
+            ?>
         </div>
             <div class="form-rest"></div>
             <form class="registro confirmacion" method="POST" action="../php/verificar_preguntas.php" autocomplete="off">

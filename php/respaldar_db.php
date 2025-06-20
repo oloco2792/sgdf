@@ -32,8 +32,6 @@ $command = "$mysqldump_path -u " . escapeshellarg("root") .
            " " . escapeshellarg("sgdf") .
            " > " . escapeshellarg($filepath);
 
-           echo $command;
-
 $output = [];
 $return_var = 0;
 exec($command, $output, $return_var); 

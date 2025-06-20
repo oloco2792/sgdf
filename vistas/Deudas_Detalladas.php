@@ -59,7 +59,7 @@ while ($deuda = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     </svg>
                 '."</button>
             </form>";
-        if($_SESSION['user']==="admin"){
+        if($_SESSION['nivel']===1){
         echo "<form method='POST' action='index.php?vistas=Modificar_Deuda'>
             <input type='hidden' name='deuda_id' value='" . htmlspecialchars($deuda['id']) . "'>
             <input type='hidden' name='persona_id' value='" . $persona_id . "'>

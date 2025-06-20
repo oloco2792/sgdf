@@ -14,13 +14,10 @@ echo "<table id='miTabla'class='registros__tabla'>";
 echo "<thead>";
 echo "<tr>";
 
-$columns = $stmt->fetch(PDO::FETCH_ASSOC);
-if ($columns) {
-    foreach ($columns as $columnName => $value) {
-        echo "<th class='registros__th'>" . htmlspecialchars($columnName) . "</th>";
-    }
+    echo "<th class='registros__th'>ID</th>";
+    echo "<th class='registros__th'>Razon Social</th>";
+    echo "<th class='registros__th'>RIF</th>";
     echo "<th class='registros__th'>Acciones</th>";
-}
 echo "</tr>";
 echo "</thead>";
 

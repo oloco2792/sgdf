@@ -5,7 +5,7 @@ require_once "./php/main.php";
 $pdo = conexion();
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$sql = "SELECT p.*, IFNULL(SUM(d.monto_inicial), 0) AS deuda_total
+$sql = "SELECT p.*, IFNULL(SUM(d.monto_actual), 0) AS deuda_total
             FROM `proveedores` p
             LEFT JOIN facturas d ON p.id = d.proveedor_id AND d.estado != 'pagada'
             GROUP BY p.id";

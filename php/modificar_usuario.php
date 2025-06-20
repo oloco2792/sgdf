@@ -1,6 +1,11 @@
 <?php
 require_once "main.php";
 
+if($_SESSION['nivel']!==1){
+    header("Location: ../index.php?vistas=Inicio");
+    exit;
+}
+
 $user = limpiar_cadena($_POST['id']);
 $pass = limpiar_cadena($_POST['pass']);
 $pass_confirm = limpiar_cadena($_POST['pass_confirm']);

@@ -14,7 +14,7 @@ if($user == "" || $pass == ""){
 }
 
 //Verificando Integridad de los Datos
-if(verificar_datos("[a-zA-Z0-9]{3,40}", $user)){
+if(verificar_datos("[a-zA-Z0-9]{4,12}", $user)){
     echo "<div class='mensaje_error'>
         <p class='mensaje_error__p'>El usuario no coincide con el formato solicitado.</p>
     </div>";
@@ -22,7 +22,7 @@ if(verificar_datos("[a-zA-Z0-9]{3,40}", $user)){
     exit();
 }
 
-if(verificar_datos("[a-zA-Z0-9]{3,40}", $pass)){
+if(verificar_datos("[a-zA-Z0-9]{4,12}", $pass)){
     echo "<div class='mensaje_error'>
         <p class='mensaje_error__p'>La contraseña no coincide con el formato solicitado.</p>
     </div>";
@@ -40,6 +40,7 @@ if($check_user->rowCount()==1){
     if($check_user['user']==$user && password_verify($pass, $check_user['pass'])){
 
         $_SESSION['user'] = $check_user['user'];
+        $_SESSION['nivel'] = $check_user['nivel'];
 
         if(headers_sent()){
             echo "<script> window.location.href='index.php?vistas=Inicio'; </script>";

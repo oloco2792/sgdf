@@ -5,10 +5,9 @@ $razon_social = limpiar_cadena($_POST['razon_social']);
 $rif = limpiar_cadena($_POST['rif']);
 $monto = limpiar_cadena($_POST['monto']);
 $fecha = limpiar_cadena($_POST['fecha']);
-$estado = limpiar_cadena($_POST['estado']);
 $descripcion = limpiar_cadena($_POST['descripcion']);
 
-if ($razon_social == "" || $rif == "" || $monto == "" || $estado == "") {
+if ($razon_social == "" || $rif == "" || $monto == "") {
 echo "<div class='mensaje_error'>
 <p class='mensaje_error__p'>Uno de los campos obligatorios no ha sido llenado</p>
 </div>";
@@ -56,12 +55,6 @@ if ($resultado) {
         exit();
     }
 
-    if ($resultado['rif'] !== $rif) {
-        echo "<div class='mensaje_error'>
-                <p class='mensaje_error__p'>El nombre/Razon Social ya se encuentra registrado.</p>
-        </div>";
-        exit();
-    }
     $id_proveedor = null; 
 
     $stmt = $pdo->prepare("SELECT id FROM proveedores WHERE rif = :rif");
@@ -83,8 +76,9 @@ if ($resultado) {
 }
 
 $fecha_formateada = date('Y-m-d', strtotime($fecha));
+$estado = "No Pagada";
 
-$stmt_factura = $pdo->prepare("INSERT INTO facturas (proveedor_id, monto, fecha, estado, descripcion, monto_actual, fecha_actualizacion, descripcion_pago) VALUES (:proveedor_id, :monto, :fecha, :estado, :descripcion, :monto,:fecha, '')");
+$stmt_factura = $pdo->prepare("INSERT INTO facturas (proveedor_id, monto_inicial, fecha, estado, descripcion, monto_actual, fecha_actualizacion, descripcion_pago) VALUES (:proveedor_id, :monto, :fecha, :estado, :descripcion, :monto, :fecha, '')");
 $stmt_factura->execute([
     ':proveedor_id' => $id_proveedor,
     ':monto' => $monto,

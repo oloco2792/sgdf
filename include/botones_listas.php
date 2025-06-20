@@ -51,7 +51,7 @@ echo '<form method="POST" action="index.php?vistas=Nueva_Factura">
 }else if($vistas=="Ver_Facturas"){
     echo '<button class="boton" id="boton" type="button">Crear Factura</button>';
 }else if($vistas=="Ver_Personas"){
-    echo '<button class="boton" id="boton" type="button">Registrar Persona</button>';
+    echo '<button class="boton" id="boton" type="button">Registrar Cliente</button>';
 }else if($vistas=="Ver_Proveedores"){
     echo '<button class="boton" id="boton" type="button">Registrar Proveedor</button>';
 }else if($vistas=="Ver_Usuarios"){

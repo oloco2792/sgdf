@@ -20,6 +20,10 @@ $stmtNombre->execute([':persona_id' => $persona_id]);
 $persona = $stmtNombre->fetch(PDO::FETCH_ASSOC);
 $nombre_completo = $persona ? $persona['nombre'] .' '. $persona['apellido'].' (V-'. $persona['cedula'].') de '. $monto['monto_actual'] .'Bs. (ID: '.$deuda.')': 'Desconocido';
 
+if($monto['monto_actual']==0){
+    header("Location: index.php?vistas=Inicio&mensaje=pago_ya_registrado");
+}
+
 ?>
 
 <h1>Pagar deuda de <?=$nombre_completo?></h1>
@@ -29,7 +33,7 @@ $nombre_completo = $persona ? $persona['nombre'] .' '. $persona['apellido'].' (V
     <?php echo "<input type='hidden' name='deuda_id' value='".$deuda. "'>";?>
 
     <label class="" for="monto">Monto a Pagar</label>
-    <input class="" type="number" name="monto" pattern="[0-9]{1, 20}" maxlength="20" required>
+    <input class="" type="number" name="monto" pattern="[0-9]{1, 20}" maxlength="20" value="<?=$monto['monto_actual']?>" required>
 
     <label class="" for="fecha_actualizacion">Fecha de Actualizacion</label>
     <input class="" type="date" name="fecha_actualizacion" pattern="[0-9]{1, 20}" maxlength="20" required>

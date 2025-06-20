@@ -38,6 +38,11 @@ if (isset($_GET['mensaje'])) {
         		<p class='mensaje_error__p'>Algo ha salido mal.</p>
     		</div>";
 		break;
+		case "pago_ya_registrado":
+			echo "<div class='mensaje_exito'>
+        		<p class='mensaje_exito__p'>La deuda/factura ya se encuentra pagada.</p>
+    		</div>";
+		break;
 	}
 }
 ?>

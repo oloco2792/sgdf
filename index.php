@@ -18,16 +18,12 @@
             exit();
         }
 
-        if($_SESSION['user']!=="admin"
+        if($_SESSION['nivel']!==1
         &&(
-        $_GET['vistas']=="modificar_deudas" ||
         $_GET['vistas']=="modificar_deuda" ||
         $_GET['vistas']=="modificar_factura" ||
-        $_GET['vistas']=="modificar_factura" ||
-        $_GET['vistas']=="modificar_proveedores" ||
         $_GET['vistas']=="modificar_proveedor" ||
         $_GET['vistas']=="modificar_persona" ||
-        $_GET['vistas']=="modificar_personas" ||
         $_GET['vistas']=="respaldar_db"
         )){
             $_GET['vistas'] = "home";

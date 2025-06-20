@@ -46,7 +46,8 @@ if (isset($_POST['html_content'])) {
     <body>
         <h1>SUMINISTRO DE ALIMENTOS DON GREGO C.A</h1>
         <h2>J-409523802</h2>
-        <h2>Registro Total de Proveedores Registrados</h2>
+        <h2>Registro de Proveedores</h2>
+        <h2>Fecha: '.date('d-m-Y').'</h2>
         ' . $html_recibido . '
     </body>
     </html>';
@@ -58,7 +59,7 @@ if (isset($_POST['html_content'])) {
 
     $dompdf->render();
 
-    $dompdf->stream("reporte_deudas_personas.pdf", ["Attachment" => true]);
+    $dompdf->stream("reporte_proveedores(".date('d-m-Y').").pdf", ["Attachment" => true]);
 
 } else {
     // Si no se recibió el contenido HTML, puedes redirigir o mostrar un mensaje de error

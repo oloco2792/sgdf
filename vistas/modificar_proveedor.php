@@ -15,10 +15,10 @@ $proveedor_id = $_POST['proveedor_id'];
         <input class="activarInput" type="hidden" name="proveedor_id" value="<?=$proveedor_id?>" required>
 
             <label class="datosNombres" for="razon_social">Razon Social</label>
-            <input class="activarInput" type="text" name="razon_social" pattern="[a-zA-Z]{4, 20}" maxlength="20" required>
+            <input class="activarInput" type="text" name="razon_social" pattern="[a-zA-Z]{4, 20}" maxlength="20" value="<?=$persona['razon_social']?>" required>
     
             <label class="" for="rif">RIF (J-)</label>
-            <input class="" type="number" name="rif" pattern="[0-9]{1, 20}" maxlength="20" required>
+            <input class="" type="number" name="rif" pattern="[0-9]{1, 20}" maxlength="20" value="<?=$persona['rif']?>" required>
         
         <?php include_once "./include/botones_form.php" ?>
     </form>

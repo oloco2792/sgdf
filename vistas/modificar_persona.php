@@ -14,14 +14,14 @@ $persona_id = $_POST['persona_id'];
             
         <input class="activarInput" type="hidden" name="persona_id" value="<?=$persona_id?>" required>
 
-            <label class="datosNombres" for="nombre">Nombre</label>
-            <input class="activarInput" type="text" name="nombre" pattern="[a-zA-Z]{4, 20}" maxlength="20" required>
+            <label class="datosNombres" for="nombre" value="<?=$persona['nombre']?>">Nombre</label>
+            <input class="activarInput" type="text" name="nombre" pattern="[a-zA-Z]{4, 40}" maxlength="20" value="<?=$persona['nombre']?>" required>
         
-            <label class="datosNombres" for="apellido">Apellido</label>
-            <input class="activarInput" type="text" name="apellido" pattern="[a-zA-Z]{4, 20}" maxlength="20" required>
+            <label class="datosNombres" for="apellido" value="<?=$persona['apellido']?>">Apellido</label>
+            <input class="activarInput" type="text" name="apellido" pattern="[a-zA-Z]{4, 40}" maxlength="20" value="<?=$persona['apellido']?>" required>
 
-            <label class="" for="cedula">Cedula (V-)</label>
-            <input class="" type="number" name="cedula" pattern="[0-9]{1, 20}" maxlength="20" required>
+            <label class="" for="cedula" >Cedula (V-)</label>
+            <input class="" type="number" name="cedula" pattern="[0-9]{6, 8}" maxlength="20" value="<?=$persona['cedula']?>" required>
         
         <?php include_once "./include/botones_form.php" ?>
     </form>

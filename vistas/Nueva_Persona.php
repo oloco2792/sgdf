@@ -1,4 +1,4 @@
-    <h1>Registrar Persona</h1>
+    <h1>Registrar Cliente</h1>
     <div class="form-rest"></div>
     <form class="registro FormularioAjax" method="POST" action="./php/registrar_persona.php" autocomplete="off">
             

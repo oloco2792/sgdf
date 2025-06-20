@@ -2,27 +2,31 @@
 require_once "main.php";
     $pdo = conexion();
 
+if($_SESSION['nivel']==1){
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $proveedor_id = limpiar_cadena($_POST['proveedor_id']);
+    $persona_id = limpiar_cadena($_POST['persona_id']);
 
     try {
-    $stmt = $pdo->prepare("DELETE FROM facturas WHERE proveedor_id = :id");
+    $stmt = $pdo->prepare("DELETE FROM deudas WHERE persona_id = :id");
     $stmt->execute([
-    ':id' => $proveedor_id]);
+    ':id' => $persona_id]);
 
-    $stmt = $pdo->prepare("DELETE FROM proveedores WHERE id = :id");
+    $stmt = $pdo->prepare("DELETE FROM personas WHERE id = :id");
     $stmt->execute([
-    ':id' => $proveedor_id
+    ':id' => $persona_id
     ]);
 
-        header("Location: ../index.php?vistas=Inicio&mensaje=eliminar_proveedor_exito");
+        header("Location: ../index.php?vistas=Inicio&mensaje=eliminar_persona_exito");
         exit;
     } catch (Exception $e) {
 
-        header("Location: ../index.php?vistas=Inicio&mensaje=eliminar_error");
+        header("Location: ../index.php?vistas=Inicio&mensaje=eliminar_deuda_error");
         exit;
     }
 }
-$pdo = null;
+}else{
+    header("Location: ../index.php?vistas=Inicio");
+    exit;
+}
 
 ?>
