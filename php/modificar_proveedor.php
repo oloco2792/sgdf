@@ -1,11 +1,6 @@
 <?php
 require_once "main.php";
 
-if($_SESSION['nivel']!==1){
-    header("Location: ../index.php?vistas=Inicio");
-    exit;
-}
-
 $pdo = conexion();
 
 $id = limpiar_cadena($_POST['proveedor_id']);
@@ -55,3 +50,5 @@ echo "<div class='mensaje_exito'>
       </div>";
 
 ?>
+
+

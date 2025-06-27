@@ -1,10 +1,10 @@
 <?php
 require_once "main.php";
 
-if($_SESSION['nivel']!==1){
+/*if($_SESSION['nivel']!==1){
     header("Location: ../index.php?vistas=Inicio");
-    exit;
-}
+    exit();
+}*/
 
 $pdo = conexion();
 

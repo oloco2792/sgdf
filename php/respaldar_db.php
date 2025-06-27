@@ -19,7 +19,7 @@ $filepath = $backup_dir . $filename;
 // ¡Importante! Necesitas la ruta completa a mysqldump.
 // En Linux/macOS, suele ser /usr/bin/mysqldump o /usr/local/bin/mysqldump
 // En Windows, es la ruta dentro de tu instalación de MySQL (ej: C:\xampp\mysql\bin\mysqldump.exe)
-$mysqldump_path = 'C:\wamp64\bin\mysql\mysql8.3.0\bin\mysqldump.exe'; // O la ruta correcta para tu servidor
+$mysqldump_path = 'C:\wamp64\bin\mysql\mysql9.1.0\bin\mysqldump.exe'; // O la ruta correcta para tu servidor
 
 if (!file_exists($mysqldump_path)) {
     die("Error: mysqldump no encontrado en la ruta especificada: " . htmlspecialchars($mysqldump_path) . ". Por favor, verifica la ruta.");

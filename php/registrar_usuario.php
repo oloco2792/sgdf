@@ -8,6 +8,7 @@ $pregunta_1 = limpiar_cadena($_POST['pregunta_1']);
 $respuesta_1 = limpiar_cadena($_POST['respuesta_1']);
 $pregunta_2 = limpiar_cadena($_POST['pregunta_2']);
 $respuesta_2 = limpiar_cadena($_POST['respuesta_2']);
+$nivel = limpiar_cadena($_POST['nivel']);
 
 if ($user == "" || $pass == "" || $respuesta_1 == "" || $respuesta_2 == "") {
 echo "<div class='mensaje_error'>
@@ -77,14 +78,15 @@ if ($resultado) {
 
 $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
 
-$stmt_user = $pdo->prepare("INSERT INTO usuarios (user, pass, preguntas1_id, respuesta_1, preguntas2_id, respuesta_2) VALUES (:user, :pass, :pregunta_1, :respuesta_1, :pregunta_2, :respuesta_2)");
+$stmt_user = $pdo->prepare("INSERT INTO usuarios (user, pass, preguntas1_id, respuesta_1, preguntas2_id, respuesta_2, nivel) VALUES (:user, :pass, :pregunta_1, :respuesta_1, :pregunta_2, :respuesta_2, :nivel)");
 $stmt_user->execute([
     ":user" => $user,
     ":pass" => $pass_hash,
     ":pregunta_1" => $pregunta_1,
     ":respuesta_1" => $respuesta_1,
     ":pregunta_2" => $pregunta_2,
-    ":respuesta_2" => $respuesta_2
+    ":respuesta_2" => $respuesta_2,
+    ":nivel" => $nivel
 ]);
 
 echo "<div class='mensaje_exito'>

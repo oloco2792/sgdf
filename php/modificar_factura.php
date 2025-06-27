@@ -1,10 +1,10 @@
 <?php
 require_once "main.php";
 
-if($_SESSION['nivel']!==1){
+/*if($_SESSION['nivel']!==1){
     header("Location: ../index.php?vistas=Inicio");
     exit;
-}
+}*/
 
 $pdo = conexion();
 
@@ -33,6 +33,13 @@ if (verificar_datos("[0-9]{1,40}", $monto_inicial)) {
 if ($monto_inicial == 0) {
     echo "<div class='mensaje_error'>
     <p class='mensaje_error__p'>El Monto Inicial no coincide con el formato solicitado</p>
+    </div>";
+    exit();
+}
+
+if ($monto_actual == 0) {
+    echo "<div class='mensaje_error'>
+    <p class='mensaje_error__p'>El Monto Actual no coincide con el formato solicitado</p>
     </div>";
     exit();
 }

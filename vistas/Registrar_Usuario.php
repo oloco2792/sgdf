@@ -58,5 +58,10 @@ $preguntas2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             </div>
             
         </div>
+        <label for="nivel">Nivel de Usuario</label>
+            <select class="registros__select" name="nivel" required>
+                <option value="1">Administrador</option>
+                <option value="0" selected>Usuario</option>
+            </select>
     <?php include "./include/botones_form.php"?>
 </form>

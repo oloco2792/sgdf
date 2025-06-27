@@ -21,6 +21,7 @@ if ($columns) {
     }
     echo "<th class='registros__th'>Acciones</th>";
 }
+
 echo "</tr>";
 echo "</thead>";
 
@@ -31,7 +32,7 @@ $stmt->execute();
 
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
-    if ($row['user'] == "admin") {
+    if ($row['user'] == $_SESSION['user']) {
         continue;
     }
 

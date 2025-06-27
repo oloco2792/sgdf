@@ -22,7 +22,7 @@ if(verificar_datos("[a-zA-Z0-9]{4,12}", $user)){
     exit();
 }
 
-if(verificar_datos("[a-zA-Z0-9]{4,12}", $pass)){
+if(verificar_datos("[a-zA-Z0-9]{3,12}", $pass)){
     echo "<div class='mensaje_error'>
         <p class='mensaje_error__p'>La contraseña no coincide con el formato solicitado.</p>
     </div>";
@@ -57,7 +57,7 @@ if($check_user->rowCount()==1){
     }
 }else{
     echo "<div class='mensaje_error'>
-        <p class='mensaje_error__p'>Ha ocurrido un error inesperado.</p>
+        <p class='mensaje_error__p'>El usuario ingresado no existe.</p>
     </div>";
     include "./include/login_footer.php";
     exit();

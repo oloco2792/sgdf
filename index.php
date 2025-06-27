@@ -18,7 +18,7 @@
             exit();
         }
 
-        if($_SESSION['nivel']!==1
+        if($_SESSION['user']=="admin"
         &&(
         $_GET['vistas']=="modificar_deuda" ||
         $_GET['vistas']=="modificar_factura" ||

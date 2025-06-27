@@ -1,8 +1,6 @@
 <?php
 require_once "main.php";
     $pdo = conexion();
-
-if($_SESSION['nivel']==1){
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $persona_id = limpiar_cadena($_POST['persona_id']);
 
@@ -24,9 +22,5 @@ if($_SESSION['nivel']==1){
             exit;
         }
     }
-}else{
-    header("Location: ../index.php?vistas=Inicio");
-    exit;
-}
 
 ?>
